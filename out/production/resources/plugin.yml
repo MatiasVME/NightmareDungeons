@@ -1,0 +1,13 @@
+name: NightmareDungeons
+version: 0.0
+main: mc.nightmarephoenix.nightmaredungeons.NightmareDungeons
+api-version: 1.17
+prefix: [NightmareDungeons]
+authors: [DadoGamer13, MatiasME]
+description: Dungeon Plugin
+commands:
+  nd:
+    description: NightmareDungeons command
+    usage: /nd args
+    permission: nightmaredungeons.player
+    permission-message: You don't have <permission>

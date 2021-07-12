@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NightmareDungeons:jar">
+    <output-path>$PROJECT_DIR$/../nf/1.17Server/plugins</output-path>
+    <root id="archive" name="NightmareDungeons.jar">
+      <element id="module-output" name="NightmareDungeons.main" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+    </root>
+  </artifact>
+</component>
