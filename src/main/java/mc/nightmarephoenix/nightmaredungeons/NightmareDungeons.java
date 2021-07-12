@@ -6,7 +6,8 @@ public final class NightmareDungeons extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+
+        System.out.println("fdssfdfsdfsd--------------------------------");
 
     }
 
