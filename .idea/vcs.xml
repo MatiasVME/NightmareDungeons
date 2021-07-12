@@ -2,33 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/AnchorSell" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Asny-Friends" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/BlackMana" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/BomberQueen" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/BusinessSimulator" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/GGJ2021" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Gateguards" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Iron-golem-spawner-fix-1.16" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Node-City" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Persistence" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/QuizNodes" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/RPGElements" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ReferME" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/TableroMultiplayer" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/XLearni" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/aprender-a-programar-para-desarrollar-videojuegos-con-godot-engine" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/community-map" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/epicset-spawners" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/godot-finite-state-machine" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/godot-presentations" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/godot-rust-benchmark" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/godot-shader-tutorials" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/godot-shaders" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/godot_tutorial_content" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/the-zero-day" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/thevulcoreteam.github.io" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/vulcoreteam.com" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/web-nightmare-phoenix" vcs="Git" />
   </component>
 </project>
