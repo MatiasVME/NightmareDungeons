@@ -8,6 +8,6 @@ description: Dungeon Plugin
 commands:
   nd:
     description: NightmareDungeons command
-    usage: /nd args
+    usage: /nd
     permission: nightmaredungeons.player
     permission-message: You don't have <permission>
