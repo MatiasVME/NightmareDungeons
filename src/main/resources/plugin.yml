@@ -1,0 +1,7 @@
+name: NightmareDungeons
+version: @version@
+main: mc.nightmarephoenix.nightmaredungeons.NightmareDungeons
+api-version: 1.17
+prefix: [NightmareDungeons]
+authors: [DadoGamer13, MatiasME]
+description: Dungeon Plugin
