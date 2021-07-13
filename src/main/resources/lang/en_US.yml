@@ -1,4 +1,4 @@
-plugin-prefix: "&6&lNightmareDungeons &7 - &f"
+plugin-prefix: "&4&lNightmareDungeons &7 - &f"
 
 reload-message: "&aConfig reloaded."
 help-message:
@@ -14,5 +14,5 @@ help-message-admin:
   - "&e/nd authors"
   - "&7&m---------------------------------------"
 
-unknown-command: "&4&lDungeons &7- &fUnknown command."
+unknown-command: "&fUnknown command."
 not-a-player: "&cThis command must be run by a player"

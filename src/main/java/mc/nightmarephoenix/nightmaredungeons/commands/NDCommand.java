@@ -18,11 +18,9 @@ public class NDCommand implements CommandExecutor {
         if(sender.hasPermission("nightmaredungeons.admin")) {
 
             if(args.length == 0) {
-                for(String line: Messages.getConfig().getStringList("help-message-admin")) {
-                    sender.sendMessage(Utils.Color(line));
-                }
-            }else if(args.length == 1) {
-                if(args[0].equals("reload")) {
+                Utils.sendConfigMultilineMessage("help-message-admin", sender);
+            } else if(args.length == 1) {
+                if(args[0].equalsIgnoreCase("reload")) {
 
                     Global.plugin.reloadConfig();
                     EnemiesStorage.reloadConfig();
@@ -30,19 +28,29 @@ public class NDCommand implements CommandExecutor {
                     BossesStorage.reloadConfig();
                     Messages.reloadConfig();
 
-                    sender.sendMessage(Utils.Color("&aConfig reloaded."));
+                    sender.sendMessage(Utils.configMessage("reload-message"));
 
+                } else if(args[0].equalsIgnoreCase("help")) {
+                    Utils.sendConfigMultilineMessage("help-message-admin", sender);
+                } else {
+                    sender.sendMessage(Utils.configMessage("unknown-command"));
                 }
             }
 
         } else {
             // --- Regular users commands --- //
             if(args.length == 0) {
-                for (String line : Messages.getConfig().getStringList("help-message")) {
-                    sender.sendMessage(Utils.Color(line));
+                Utils.sendConfigMultilineMessage("help-message", sender);
+            } else if(args.length == 1) {
+                if(args[0].equalsIgnoreCase("help")) {
+                    Utils.sendConfigMultilineMessage("help-message", sender);
+                } else {
+                    sender.sendMessage(Utils.configMessage("unknown-command"));
                 }
             }
         }
+
+
 
         return true;
     }
