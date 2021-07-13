@@ -1,0 +1,18 @@
+dungeon-name: "Dungeon1"
+mobs-spawn:
+  spawn1:
+    cords: [ 100, 60, 101 ]
+    enemies: enemy1.yml
+    enemies-amount-min: 10
+    enemies-amount-max: 15
+    ticks-enemy-spawn: 10
+  spawn2:
+    cords: [ 200, 60, 201 ]
+    enemies: enemy2.yml
+    enemies-amount-min: 10
+    enemies-amount-max: 15
+    ticks-enemy-spawn: 10
+rules:
+  time: -1 # -1 No time
+  no-natural-regen: false
+  # deny-commands: [] # TODO

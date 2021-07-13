@@ -1,0 +1,5 @@
+name: "Generic Skeleton"
+mob-base: SKELETON
+health: 60
+damage: 40
+speed: 1.1

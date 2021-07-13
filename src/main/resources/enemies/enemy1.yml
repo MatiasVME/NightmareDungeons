@@ -1,0 +1,5 @@
+name: "Generic Zombie"
+mob-base: ZOMBIE
+health: 60
+damage: 40
+speed: 1.1

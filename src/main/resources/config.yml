@@ -1,2 +1,4 @@
 config-version: 0.0.0
 
+plugin-prefix: "[NightmareDungeons]"
+lang: en_US.yml
