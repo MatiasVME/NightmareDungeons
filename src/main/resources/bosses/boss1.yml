@@ -18,19 +18,19 @@ armor:
       PROTECTION_ENVIRONMENTAL: 4
   chestplate:
     type: diamond
-      enchants:
-        DURABILITY: 3
-        PROTECTION_ENVIRONMENTAL: 4
+    enchants:
+      DURABILITY: 3
+      PROTECTION_ENVIRONMENTAL: 4
   leggings:
     type: diamond
-      enchants:
-        DURABILITY: 3
-        PROTECTION_ENVIRONMENTAL: 4
+    enchants:
+      DURABILITY: 3
+      PROTECTION_ENVIRONMENTAL: 4
   boots:
     type: diamond
-      enchants:
-        DURABILITY: 3
-        PROTECTION_ENVIRONMENTAL: 4
+    enchants:
+      DURABILITY: 3
+      PROTECTION_ENVIRONMENTAL: 4
 rewards:
   xp:
     minimum: 1000

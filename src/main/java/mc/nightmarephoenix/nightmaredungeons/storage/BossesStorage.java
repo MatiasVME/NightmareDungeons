@@ -6,11 +6,11 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.*;
 import java.util.ArrayList;
 
-public class EnemiesStorage {
+public class BossesStorage {
 
-    private static final String defaultEnemies[] = {"enemy1.yml", "enemy2.yml"};
+    private static final String defaultBosses[] = {"boss1.yml"};
 
-    public EnemiesStorage() {
+    public BossesStorage() {
         saveDefaultConfig();
     }
 
@@ -61,13 +61,13 @@ public class EnemiesStorage {
 
     public static void saveDefaultConfig() {
         configFolder = new File(
-                    Global.plugin.getDataFolder() + File.separator + "enemies"
+                Global.plugin.getDataFolder() + File.separator + "bosses"
         );
-        if(!configFolder.exists()) { // load default enemies
+        if(!configFolder.exists()) { // load default bosses
             configFolder.getParentFile().mkdirs();
-            for(int i = 0; i < defaultEnemies.length; i++) {
+            for(int i = 0; i < defaultBosses.length; i++) {
                 Global.plugin.saveResource(
-                        "enemies" + File.separator + defaultEnemies[i],
+                        "bosses" + File.separator + defaultBosses[i],
                         false
                 );
             }
@@ -80,4 +80,5 @@ public class EnemiesStorage {
     //
 
     private static File configFolder = null;
+
 }
