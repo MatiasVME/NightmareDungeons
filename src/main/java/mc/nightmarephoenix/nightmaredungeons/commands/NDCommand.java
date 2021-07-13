@@ -14,14 +14,11 @@ public class NDCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // --- Regular users commands --- //
-
-
         // --- Admin commands --- //
         if(sender.hasPermission("nightmaredungeons.admin")) {
 
             if(args.length == 0) {
-                for(String line: Global.plugin.getConfig().getStringList("help-message-admin")) {
+                for(String line: Messages.getConfig().getStringList("help-message-admin")) {
                     sender.sendMessage(Utils.Color(line));
                 }
             }else if(args.length == 1) {
@@ -38,6 +35,13 @@ public class NDCommand implements CommandExecutor {
                 }
             }
 
+        } else {
+            // --- Regular users commands --- //
+            if(args.length == 0) {
+                for (String line : Messages.getConfig().getStringList("help-message")) {
+                    sender.sendMessage(Utils.Color(line));
+                }
+            }
         }
 
         return true;

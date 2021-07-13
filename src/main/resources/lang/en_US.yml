@@ -4,7 +4,7 @@ reload-message: "&aConfig reloaded."
 help-message:
   - "&7&m----------&r &4&lNightmareDungeons &7&m----------"
   - "&e/nd list &fLists all dungeons"
-  - "&7&m----------------------------------------"
+  - "&7&m---------------------------------------"
 
 help-message-admin:
   - "&7&m----------&r &4&lNightmareDungeons &7&m----------"
@@ -12,7 +12,7 @@ help-message-admin:
   - "&e/nd list &fLists all dungeons"
   - ""
   - "&e/nd authors"
-  - "&7&m----------------------------------------"
+  - "&7&m---------------------------------------"
 
 unknown-command: "&4&lDungeons &7- &fUnknown command."
 not-a-player: "&cThis command must be run by a player"
