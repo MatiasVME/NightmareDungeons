@@ -7,6 +7,7 @@ import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NightmareDungeons extends JavaPlugin {
@@ -31,9 +32,10 @@ public final class NightmareDungeons extends JavaPlugin {
          * Default config files
          */
         this.saveDefaultConfig();
-        new BossesStorage().saveDefaultConfig();
-        new EnemiesStorage().saveDefaultConfig();
-        new DungeonsStorage().saveDefaultConfig();
+        BossesStorage.saveDefaultConfig();
+        EnemiesStorage.saveDefaultConfig();
+        DungeonsStorage.saveDefaultConfig();
+
     }
 
     @Override

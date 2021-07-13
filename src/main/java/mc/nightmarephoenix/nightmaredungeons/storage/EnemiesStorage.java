@@ -1,18 +1,14 @@
 package mc.nightmarephoenix.nightmaredungeons.storage;
 
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.logging.Level;
+import java.io.*;
+import java.util.ArrayList;
 
 public class EnemiesStorage {
 
-    private String defaultEnemies[] = {"enemy1.yml", "enemy2.yml"};
+    private static String defaultEnemies[] = {"enemy1.yml", "enemy2.yml"};
 
     public EnemiesStorage() {
         saveDefaultConfig();
@@ -21,67 +17,67 @@ public class EnemiesStorage {
     /**
      * Reloads a user config.
      */
-    public void reloadConfig() {
-        if(this.configFile == null) {
-            this.configFile = new File(
-                    Global.plugin.getDataFolder() + File.separator + "enemies", "enemies.yml"
-            );
-        }
-        this.dataConfig = YamlConfiguration.loadConfiguration(this.configFile);
-        InputStream defaultStream = Global.plugin.getResource("enemies.yml");
+    public static void reloadConfig() {
 
-        if(defaultStream != null) {
-            YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
-            this.dataConfig.setDefaults(defaultConfig);
-        }
-    }
+        dataConfig.removeAll(dataConfig);
 
-    public FileConfiguration getConfig() {
-        if(this.dataConfig == null) {
-            reloadConfig();
-        }
-        return this.dataConfig;
-    }
-
-    public void saveConfig() {
-        if(this.dataConfig == null || this.configFile == null) {
-            return;
-        }
-        try {
-            this.getConfig().save(this.configFile);
-        } catch (IOException e) {
-            Global.plugin.getLogger().log(Level.SEVERE, "Could not save config to " + this.configFile, e);
-        }
-    }
-
-    public void saveDefaultConfig() {
-        for(int i = 0; i < defaultEnemies.length; i++) {
-            if(this.configFile == null) {
-                this.configFile = new File(
-                        Global.plugin.getDataFolder() + File.separator + "enemies",
-                        defaultEnemies[i]
-                );
-            }
-            if(!this.configFile.exists()) {
-                if (!configFile.exists()) {
-                    configFile.getParentFile().mkdirs();
-                    Global.plugin.saveResource(
-                            "enemies" + File.separator + defaultEnemies[i],
-                            false
-                    );
-                }
-
-                dataConfig = new YamlConfiguration();
+        if(configFolder.exists()) {
+            for(File f: configFolder.listFiles()) {
+                InputStream defaultStream = null;
                 try {
-                    dataConfig.load(configFile);
-                } catch (IOException | InvalidConfigurationException e) {
+                    defaultStream = new FileInputStream(f);
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
+                if(defaultStream != null) {
+                    YamlConfiguration conf = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
+                    dataConfig.add(conf);
+                    configFiles.add(f);
+                }
             }
-            configFile = null;
         }
     }
 
-    private FileConfiguration dataConfig = null;
-    private File configFile = null;
+    public static ArrayList<FileConfiguration> getConfigs() {
+        if(dataConfig.isEmpty()) {
+            reloadConfig();
+        }
+
+        return dataConfig;
+    }
+
+    public static void saveConfig(FileConfiguration config) {
+        for(FileConfiguration f : getConfigs()) {
+            if(f.equals(config)) {
+                try {
+                    f.save(new File(String.valueOf(configFiles.get(dataConfig.indexOf(f)))));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
+    }
+
+    public static void saveDefaultConfig() {
+        configFolder = new File(
+                    Global.plugin.getDataFolder() + File.separator + "enemies"
+        );
+        if(!configFolder.exists()) { // load default enemies
+            configFolder.getParentFile().mkdirs();
+            for(int i = 0; i < defaultEnemies.length; i++) {
+                Global.plugin.saveResource(
+                        "enemies" + File.separator + defaultEnemies[i],
+                        false
+                );
+            }
+        }
+    }
+
+    // Linked lists
+    private static ArrayList<FileConfiguration> dataConfig = new ArrayList<>();
+    private static ArrayList<File> configFiles = new ArrayList<>();
+    //
+
+    private static File configFolder = null;
 }
