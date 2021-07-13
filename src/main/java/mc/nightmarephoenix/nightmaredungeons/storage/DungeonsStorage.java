@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class DungeonsStorage {
 
-    private static String defaultDungeons[] = {"dungeon1.yml", "dungeon2.yml"};
+    private static final String defaultDungeons[] = {"dungeon1.yml", "dungeon2.yml"};
 
     public DungeonsStorage() {
         saveDefaultConfig();
@@ -63,7 +63,7 @@ public class DungeonsStorage {
         configFolder = new File(
                 Global.plugin.getDataFolder() + File.separator + "dungeons"
         );
-        if(!configFolder.exists()) { // load default enemies
+        if(!configFolder.exists()) { // load default dungeons
             configFolder.getParentFile().mkdirs();
             for(int i = 0; i < defaultDungeons.length; i++) {
                 Global.plugin.saveResource(

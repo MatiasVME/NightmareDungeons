@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class BossesStorage {
 
-    private static String defaultBosses[] = {"boss1.yml"};
+    private static final String defaultBosses[] = {"boss1.yml"};
 
     public BossesStorage() {
         saveDefaultConfig();
@@ -63,7 +63,7 @@ public class BossesStorage {
         configFolder = new File(
                 Global.plugin.getDataFolder() + File.separator + "bosses"
         );
-        if(!configFolder.exists()) { // load default enemies
+        if(!configFolder.exists()) { // load default bosses
             configFolder.getParentFile().mkdirs();
             for(int i = 0; i < defaultBosses.length; i++) {
                 Global.plugin.saveResource(
