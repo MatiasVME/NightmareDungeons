@@ -4,7 +4,6 @@ import mc.nightmarephoenix.nightmaredungeons.commands.NDCommand;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NightmareDungeons extends JavaPlugin {
@@ -20,6 +19,7 @@ public final class NightmareDungeons extends JavaPlugin {
         this.getCommand("nd").setExecutor(new NDCommand());
 
 
+        this.saveDefaultConfig();
 
 
 

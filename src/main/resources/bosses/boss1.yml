@@ -1,0 +1,75 @@
+enabled: true
+name: 'Boss1 '
+base-mob: zombie
+bossbar:
+  enabled: false
+  color: GREEN
+  style: SOLID
+max-health: 1000
+attack-damage: 40
+movement-speed: 2
+follow-range: 20
+auto-spawn-interval: 72000
+armor:
+  helmet:
+    type: diamond
+    enchants:
+      DURABILITY: 3
+      PROTECTION_ENVIRONMENTAL: 4
+  chestplate:
+    type: diamond
+      enchants:
+        DURABILITY: 3
+        PROTECTION_ENVIRONMENTAL: 4
+  leggings:
+    type: diamond
+      enchants:
+        DURABILITY: 3
+        PROTECTION_ENVIRONMENTAL: 4
+  boots:
+    type: diamond
+      enchants:
+        DURABILITY: 3
+        PROTECTION_ENVIRONMENTAL: 4
+rewards:
+  xp:
+    minimum: 1000
+    maximum: 5000
+  top-damager-commands:
+    '1': 
+      - 'command1'
+      - 'command2'
+    '2':
+      - 'command1'
+      - 'command2'
+    '3':
+      - 'command1'
+      - 'command2'
+  nearby-player-commands:
+    radius: 10
+    commands: 
+      - 'give %player% diamond 1'
+  drops: []
+broadcast:
+  spawn:
+  - ''
+  - 'Boss1 spawn message'
+  - ''
+  death:
+  - ''
+  - 'Boss1 death message'
+  - ''
+effects:
+- summon:zombie:40
+- summon:husk:40
+- give-potion-effect:poison:8:200:10
+- give-potion-effect:slow:4:100:20
+- give-potion-effect:hunger:5:400:10
+- give-potion-effect:slow_digging:3:40:10
+defence:
+  immunities:
+    explosion: false
+    fire: true
+    drowning: true
+    projectiles: false
+    suffocation: true
