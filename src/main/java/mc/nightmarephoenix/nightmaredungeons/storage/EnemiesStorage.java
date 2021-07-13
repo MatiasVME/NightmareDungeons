@@ -1,6 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.storage;
 
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
@@ -56,17 +57,19 @@ public class EnemiesStorage {
         if(this.configFile == null) {
             this.configFile = new File(
                     Global.plugin.getDataFolder() + File.separator + "enemies",
-                    "enemies.yml"
+                    "enemy1.yml"
             );
         }
         if(!this.configFile.exists()) {
+            if (!configFile.exists()) {
+                configFile.getParentFile().mkdirs();
+                Global.plugin.saveResource("enemies/enemy1.yml", false);
+            }
+
+            dataConfig = new YamlConfiguration();
             try {
-                new File(Global.plugin.getDataFolder() + File.separator + "enemies"
-                ).mkdir();
-                new File(Global.plugin.getDataFolder() + File.separator + "enemies",
-                        "enemies.yml"
-                ).createNewFile();
-            } catch (IOException e) {
+                dataConfig.load(configFile);
+            } catch (IOException | InvalidConfigurationException e) {
                 e.printStackTrace();
             }
         }
