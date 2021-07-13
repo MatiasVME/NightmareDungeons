@@ -1,4 +1,5 @@
 dungeon-name: "Dungeon1"
+door-cords: [ 50, 65, 65 ]
 mobs-spawn:
   spawn1:
     cords: [ 100, 60, 101 ]
