@@ -28,12 +28,12 @@ public class NDCommand implements CommandExecutor {
                     BossesStorage.reloadConfig();
                     Messages.reloadConfig();
 
-                    sender.sendMessage(Utils.configMessage("reload-message"));
+                    Utils.sendConfigMessage("reload-message", sender);
 
                 } else if(args[0].equalsIgnoreCase("help")) {
                     Utils.sendConfigMultilineMessage("help-message-admin", sender);
                 } else {
-                    sender.sendMessage(Utils.configMessage("unknown-command"));
+                    Utils.sendConfigMessage("unknown-command", sender);
                 }
             }
 
@@ -45,7 +45,7 @@ public class NDCommand implements CommandExecutor {
                 if(args[0].equalsIgnoreCase("help")) {
                     Utils.sendConfigMultilineMessage("help-message", sender);
                 } else {
-                    sender.sendMessage(Utils.configMessage("unknown-command"));
+                    Utils.sendConfigMessage("unknown-command", sender);
                 }
             }
         }

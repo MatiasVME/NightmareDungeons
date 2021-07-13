@@ -29,11 +29,11 @@ public class Utils {
         return strList;
     }
 
-    public static String configMessage(String str) {
-        return ChatColor.translateAlternateColorCodes(
+    public static void sendConfigMessage(String str, CommandSender sender) {
+        sender.sendMessage(ChatColor.translateAlternateColorCodes(
                 '§',
                 Color(Messages.getConfig().getString("plugin-prefix")) + Messages.getConfig().getString(str).replace("&", "§")
-        );
+        ));
     }
 
     public static void sendConfigMultilineMessage(String message, CommandSender sender) {
