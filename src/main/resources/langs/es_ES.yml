@@ -1,4 +1,3 @@
 messages:
-  prefix: 'NightmareDungeons'
   no-permission: 'No tienes permiso para hacer esto!'
   not-player: 'Este comando debe de ser ejecutado por un jugador!'
