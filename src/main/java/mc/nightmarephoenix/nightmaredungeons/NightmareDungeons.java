@@ -2,6 +2,7 @@ package mc.nightmarephoenix.nightmaredungeons;
 
 import mc.nightmarephoenix.nightmaredungeons.commands.NDCommand;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
+import mc.nightmarephoenix.nightmaredungeons.storage.DungeonsStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
@@ -26,10 +27,13 @@ public final class NightmareDungeons extends JavaPlugin {
          */
         this.getCommand("nd").setExecutor(new NDCommand());
 
-
+        /**
+         * Default config files
+         */
         this.saveDefaultConfig();
         new BossesStorage().saveDefaultConfig();
         new EnemiesStorage().saveDefaultConfig();
+        new DungeonsStorage().saveDefaultConfig();
     }
 
     @Override

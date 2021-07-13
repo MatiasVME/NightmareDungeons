@@ -12,6 +12,8 @@ import java.util.logging.Level;
 
 public class EnemiesStorage {
 
+    private String defaultEnemies[] = {"enemy1.yml", "enemy2.yml"};
+
     public EnemiesStorage() {
         saveDefaultConfig();
     }
@@ -53,25 +55,30 @@ public class EnemiesStorage {
     }
 
     public void saveDefaultConfig() {
-
-        if(this.configFile == null) {
-            this.configFile = new File(
-                    Global.plugin.getDataFolder() + File.separator + "enemies",
-                    "enemy1.yml"
-            );
-        }
-        if(!this.configFile.exists()) {
-            if (!configFile.exists()) {
-                configFile.getParentFile().mkdirs();
-                Global.plugin.saveResource("enemies/enemy1.yml", false);
+        for(int i = 0; i < defaultEnemies.length; i++) {
+            if(this.configFile == null) {
+                this.configFile = new File(
+                        Global.plugin.getDataFolder() + File.separator + "enemies",
+                        defaultEnemies[i]
+                );
             }
+            if(!this.configFile.exists()) {
+                if (!configFile.exists()) {
+                    configFile.getParentFile().mkdirs();
+                    Global.plugin.saveResource(
+                            "enemies" + File.separator + defaultEnemies[i],
+                            false
+                    );
+                }
 
-            dataConfig = new YamlConfiguration();
-            try {
-                dataConfig.load(configFile);
-            } catch (IOException | InvalidConfigurationException e) {
-                e.printStackTrace();
+                dataConfig = new YamlConfiguration();
+                try {
+                    dataConfig.load(configFile);
+                } catch (IOException | InvalidConfigurationException e) {
+                    e.printStackTrace();
+                }
             }
+            configFile = null;
         }
     }
 
