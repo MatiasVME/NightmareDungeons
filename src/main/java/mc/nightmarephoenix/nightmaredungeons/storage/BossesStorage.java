@@ -3,15 +3,16 @@ package mc.nightmarephoenix.nightmaredungeons.storage;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 
-public class EnemiesStorage {
+public class BossesStorage {
 
-    public EnemiesStorage() {
+    public BossesStorage() {
         saveDefaultConfig();
     }
 
@@ -21,7 +22,7 @@ public class EnemiesStorage {
     public void reloadConfig() {
         if(this.configFile == null) {
             this.configFile = new File(
-                    Global.plugin.getDataFolder() + File.separator + "enemies", "enemies.yml"
+                    Global.plugin.getDataFolder() + File.separator + "bosses", "enemies.yml"
             );
         }
         this.dataConfig = YamlConfiguration.loadConfiguration(this.configFile);
@@ -52,20 +53,16 @@ public class EnemiesStorage {
     }
 
     public void saveDefaultConfig() {
-
         if(this.configFile == null) {
             this.configFile = new File(
-                    Global.plugin.getDataFolder() + File.separator + "enemies",
-                    "enemies.yml"
+                    Global.plugin.getDataFolder() + File.separator + "bosses",
+                    "boss1.yml"
             );
         }
         if(!this.configFile.exists()) {
             try {
-                new File(Global.plugin.getDataFolder() + File.separator + "enemies"
-                ).mkdir();
-                new File(Global.plugin.getDataFolder() + File.separator + "enemies",
-                        "enemies.yml"
-                ).createNewFile();
+                new File(Global.plugin.getDataFolder() + File.separator + "bosses").mkdir();
+                new File(Global.plugin.getDataFolder() + File.separator + "bosses", "boss1.yml").createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -74,4 +71,5 @@ public class EnemiesStorage {
 
     private FileConfiguration dataConfig = null;
     private File configFile = null;
+
 }

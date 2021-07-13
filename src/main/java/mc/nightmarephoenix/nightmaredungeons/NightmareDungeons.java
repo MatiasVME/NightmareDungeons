@@ -1,6 +1,8 @@
 package mc.nightmarephoenix.nightmaredungeons;
 
 import mc.nightmarephoenix.nightmaredungeons.commands.NDCommand;
+import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
+import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
@@ -14,19 +16,20 @@ public final class NightmareDungeons extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Utils.Color("&aNightmareDungeons has been activated!"));
 
         /**
+         * Initializing global variables
+         */
+        Global.plugin = this;
+
+
+        /**
          * Loading commands
          */
         this.getCommand("nd").setExecutor(new NDCommand());
 
 
         this.saveDefaultConfig();
-
-
-
-        /**
-         * Initializing global variables
-         */
-        Global.plugin = this;
+        new BossesStorage().saveDefaultConfig();
+        new EnemiesStorage().saveDefaultConfig();
     }
 
     @Override
