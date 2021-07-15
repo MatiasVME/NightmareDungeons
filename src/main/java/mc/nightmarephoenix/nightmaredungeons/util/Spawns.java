@@ -1,17 +1,19 @@
 package mc.nightmarephoenix.nightmaredungeons.util;
 
+import java.util.List;
+
 public class Spawns {
 
-    public Spawns(String name, double[] coordinates, String file, int enemies_min, int enemies_max) {
+    public Spawns(String name, List<Integer> coordinates, String enemyFile, int enemies_min, int enemies_max) {
         this.name = name;
         this.coordinates = coordinates;
-        this.file = file;
+        this.file = enemyFile;
         this.enemies_max = enemies_max;
         this.enemies_min = enemies_min;
     }
 
     private String name;
-    private double[] coordinates;
+    private List<Integer> coordinates;
     private String file;
     private int enemies_min;
     private int enemies_max;
@@ -25,11 +27,11 @@ public class Spawns {
         this.name = name;
     }
 
-    public double[] getCoordinates() {
+    public List<Integer> getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(double[] coordinates) {
+    public void setCoordinates(List<Integer> coordinates) {
         this.coordinates = coordinates;
     }
 

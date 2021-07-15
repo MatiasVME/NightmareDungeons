@@ -5,6 +5,7 @@ import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.DungeonsStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.Messages;
+import mc.nightmarephoenix.nightmaredungeons.storage.dungeons.DungeonsManager;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
@@ -22,7 +23,6 @@ public final class NightmareDungeons extends JavaPlugin {
          */
         Global.plugin = this;
 
-
         /**
          * Loading commands
          */
@@ -36,6 +36,18 @@ public final class NightmareDungeons extends JavaPlugin {
         EnemiesStorage.saveDefaultConfig();
         DungeonsStorage.saveDefaultConfig();
         Messages.saveDefaultConfig();
+
+
+        DungeonsManager.getAllDungeons().forEach((dungeon) -> {
+            System.out.println(dungeon.getName());
+            System.out.println(dungeon.getDoorCoordinates1());
+            System.out.println(dungeon.getDoorCoordinates2());
+            System.out.println(dungeon.getMobsSpawns());
+            System.out.println(dungeon.getRules());
+            System.out.println("------------------");
+
+        });
+
 
     }
 

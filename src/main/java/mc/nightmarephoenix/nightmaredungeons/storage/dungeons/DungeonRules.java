@@ -1,7 +1,9 @@
 package mc.nightmarephoenix.nightmaredungeons.storage.dungeons;
 
-public class DungeonRules {
-
-
-
+public enum DungeonRules {
+    /**
+     *
+     * TODO: Add rules
+     *
+     */
 }

@@ -1,18 +1,18 @@
 dungeon-name: "Dungeon1"
-door-cords: [ 50, 65, 65 ]
+door-coords:
+  pos1: [ 50, 65, 65 ]
+  pos2: [ 50, 65, 65 ]
 mobs-spawn:
   spawn1:
-    cords: [ 100, 60, 101 ]
-    enemies: enemy1.yml
+    coords: [ 100, 60, 101 ]
+    enemy-file: enemy1.yml
     enemies-amount-min: 10
     enemies-amount-max: 15
-    ticks-enemy-spawn: 10
   spawn2:
-    cords: [ 200, 60, 201 ]
-    enemies: enemy2.yml
+    coords: [ 200, 60, 201 ]
+    enemy-file: enemy2.yml
     enemies-amount-min: 10
     enemies-amount-max: 15
-    ticks-enemy-spawn: 10
 rules:
   time: -1 # -1 No time
   no-natural-regen: false

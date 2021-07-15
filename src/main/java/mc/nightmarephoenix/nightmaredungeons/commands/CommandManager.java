@@ -21,7 +21,6 @@ public class CommandManager implements CommandExecutor {
         adminSubCommands.add(new Reload());
     }
 
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         AtomicBoolean found = new AtomicBoolean(false);

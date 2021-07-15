@@ -20,6 +20,5 @@ public class Help extends SubCommands {
             Utils.sendConfigMultilineMessage("help-message-admin", sender);
         else
             Utils.sendConfigMultilineMessage("help-message", sender);
-
     }
 }

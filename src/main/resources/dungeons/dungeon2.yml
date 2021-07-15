@@ -1,14 +1,21 @@
 dungeon-name: "Dungeon2"
-door-coords: [ 100, 200, 300, 400, 500, 600 ]
+door-coords:
+  pos1: [ 50, 65, 65 ]
+  pos2: [ 50, 65, 65 ]
 mobs-spawn:
   spawn1:
     coords: [ 12500, 121, 5400 ]
-    enemies: enemy1.yml
+    enemy-file: enemy1.yml
     enemies-amount-min: 20
     enemies-amount-max: 40
   spawn2:
     coords: [ 12750, 160, 5400 ]
-    enemies: enemy2.yml
+    enemy-file: enemy2.yml
+    enemies-amount-min: 10
+    enemies-amount-max: 15
+  spawn3:
+    coords: [ 22750, 260, 3400 ]
+    enemy-file: enemy3.yml
     enemies-amount-min: 10
     enemies-amount-max: 15
 rules:

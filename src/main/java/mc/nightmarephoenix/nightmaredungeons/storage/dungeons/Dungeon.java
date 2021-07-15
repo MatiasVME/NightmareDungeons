@@ -3,8 +3,20 @@ package mc.nightmarephoenix.nightmaredungeons.storage.dungeons;
 import mc.nightmarephoenix.nightmaredungeons.util.Spawns;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dungeon {
+
+    public Dungeon(String name, List<Integer> doorCoordinates1, List<Integer> doorCoordinates2, ArrayList<Spawns> spawns, ArrayList<DungeonRules> rules) {
+
+        this.name = name;
+        this.doorCoordinates1 = doorCoordinates1;
+        this.doorCoordinates2 = doorCoordinates2;
+        this.mobsSpawns = spawns;
+        this.rules = rules;
+
+    }
+
 
     public String getName() {
         return name;
@@ -12,14 +24,6 @@ public class Dungeon {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double[] getDoorCoordinates() {
-        return doorCoordinates;
-    }
-
-    public void setDoorCoordinates(double[] doorCoordinates) {
-        this.doorCoordinates = doorCoordinates;
     }
 
     public ArrayList<Spawns> getMobsSpawns() {
@@ -30,16 +34,33 @@ public class Dungeon {
         this.mobsSpawns = mobsSpawns;
     }
 
-    public DungeonRules getRules() {
+    public ArrayList<DungeonRules> getRules() {
         return rules;
     }
 
-    public void setRules(DungeonRules rules) {
+    public void setRules(ArrayList<DungeonRules> rules) {
         this.rules = rules;
     }
 
+    public List<Integer> getDoorCoordinates1() {
+        return doorCoordinates1;
+    }
+
+    public void setDoorCoordinates1(List<Integer> doorCoordinates1) {
+        this.doorCoordinates1 = doorCoordinates1;
+    }
+
+    public List<Integer> getDoorCoordinates2() {
+        return doorCoordinates2;
+    }
+
+    public void setDoorCoordinates2(List<Integer> doorCoordinates2) {
+        this.doorCoordinates2 = doorCoordinates2;
+    }
+
     private String name;
-    private double[] doorCoordinates;
+    private List<Integer> doorCoordinates1, doorCoordinates2;
     private ArrayList<Spawns> mobsSpawns;
-    private DungeonRules rules;
+    private ArrayList<DungeonRules> rules;
+
 }
