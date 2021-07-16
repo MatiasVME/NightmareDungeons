@@ -1,5 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.commands.subcommands;
 
+import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonsManager;
+import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.DungeonsStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
@@ -26,6 +28,10 @@ public class Reload extends SubCommands {
         DungeonsStorage.reloadConfig();
         BossesStorage.reloadConfig();
         Messages.reloadConfig();
+
+        // Global variables
+        Global.dungeons = DungeonsManager.getAllDungeons();
+        Global.enemies  = EnemiesManager.getAllEnemies();
 
         Utils.sendConfigMessage("reload-message", sender);
     }

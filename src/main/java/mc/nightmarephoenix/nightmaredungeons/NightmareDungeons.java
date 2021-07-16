@@ -1,11 +1,12 @@
 package mc.nightmarephoenix.nightmaredungeons;
 
 import mc.nightmarephoenix.nightmaredungeons.commands.CommandManager;
+import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.DungeonsStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.Messages;
-import mc.nightmarephoenix.nightmaredungeons.storage.dungeons.DungeonsManager;
+import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonsManager;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
@@ -18,9 +19,6 @@ public final class NightmareDungeons extends JavaPlugin {
 
         Bukkit.getConsoleSender().sendMessage(Utils.Color("&aNightmareDungeons has been activated!"));
 
-        /**
-         * Initializing global variables
-         */
         Global.plugin = this;
 
         /**
@@ -38,16 +36,11 @@ public final class NightmareDungeons extends JavaPlugin {
         Messages.saveDefaultConfig();
 
 
-        DungeonsManager.getAllDungeons().forEach((dungeon) -> {
-            System.out.println(dungeon.getName());
-            System.out.println(dungeon.getDoorCoordinates1());
-            System.out.println(dungeon.getDoorCoordinates2());
-            System.out.println(dungeon.getMobsSpawns());
-            System.out.println(dungeon.getRules());
-            System.out.println("------------------");
-
-        });
-
+        /**
+         * Caches all dungeons.
+         */
+        Global.dungeons = DungeonsManager.getAllDungeons();
+        Global.enemies  = EnemiesManager.getAllEnemies();
 
     }
 

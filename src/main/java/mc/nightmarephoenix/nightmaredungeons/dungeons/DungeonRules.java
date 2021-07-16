@@ -1,4 +1,4 @@
-package mc.nightmarephoenix.nightmaredungeons.storage.dungeons;
+package mc.nightmarephoenix.nightmaredungeons.dungeons;
 
 public enum DungeonRules {
     /**

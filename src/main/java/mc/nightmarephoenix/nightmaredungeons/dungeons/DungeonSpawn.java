@@ -1,11 +1,11 @@
-package mc.nightmarephoenix.nightmaredungeons.util;
+package mc.nightmarephoenix.nightmaredungeons.dungeons;
 
 import java.util.List;
 
-public class Spawns {
+public class DungeonSpawn {
 
-    public Spawns(String name, List<Integer> coordinates, String enemyFile, int enemies_min, int enemies_max) {
-        this.name = name;
+    public DungeonSpawn(String spawnName, List<Integer> coordinates, String enemyFile, int enemies_min, int enemies_max) {
+        this.name = spawnName;
         this.coordinates = coordinates;
         this.file = enemyFile;
         this.enemies_max = enemies_max;

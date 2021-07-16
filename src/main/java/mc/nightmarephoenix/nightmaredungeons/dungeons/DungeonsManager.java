@@ -1,7 +1,7 @@
-package mc.nightmarephoenix.nightmaredungeons.storage.dungeons;
+package mc.nightmarephoenix.nightmaredungeons.dungeons;
 
 import mc.nightmarephoenix.nightmaredungeons.storage.DungeonsStorage;
-import mc.nightmarephoenix.nightmaredungeons.util.Spawns;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -11,15 +11,15 @@ public class DungeonsManager {
         ArrayList<Dungeon> dungeons = new ArrayList<>();
 
         DungeonsStorage.getConfigs().forEach((dungeon) -> {
-            ArrayList<Spawns> spawns = new ArrayList<>();
+            ArrayList<DungeonSpawn> spawns = new ArrayList<>();
             ArrayList<DungeonRules> rules = new ArrayList<>();
 
             /**
              * Iterates over all spawns.
-              */
+             */
             Set<String> spawnsStrings = dungeon.getConfigurationSection("mobs-spawn").getKeys(false);
             spawnsStrings.forEach((spawn) -> {
-                spawns.add(new Spawns(
+                spawns.add(new DungeonSpawn(
                         spawn,
                         dungeon.getIntegerList("mobs-spawn." + spawn + ".coords"),
                         dungeon.getString("mobs-spawn." + spawn + ".enemy-file"),

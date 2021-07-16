@@ -1,13 +1,11 @@
-package mc.nightmarephoenix.nightmaredungeons.storage.dungeons;
-
-import mc.nightmarephoenix.nightmaredungeons.util.Spawns;
+package mc.nightmarephoenix.nightmaredungeons.dungeons;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dungeon {
 
-    public Dungeon(String name, List<Integer> doorCoordinates1, List<Integer> doorCoordinates2, ArrayList<Spawns> spawns, ArrayList<DungeonRules> rules) {
+    public Dungeon(String name, List<Integer> doorCoordinates1, List<Integer> doorCoordinates2, ArrayList<DungeonSpawn> spawns, ArrayList<DungeonRules> rules) {
 
         this.name = name;
         this.doorCoordinates1 = doorCoordinates1;
@@ -26,11 +24,11 @@ public class Dungeon {
         this.name = name;
     }
 
-    public ArrayList<Spawns> getMobsSpawns() {
+    public ArrayList<DungeonSpawn> getMobsSpawns() {
         return mobsSpawns;
     }
 
-    public void setMobsSpawns(ArrayList<Spawns> mobsSpawns) {
+    public void setMobsSpawns(ArrayList<DungeonSpawn> mobsSpawns) {
         this.mobsSpawns = mobsSpawns;
     }
 
@@ -60,7 +58,7 @@ public class Dungeon {
 
     private String name;
     private List<Integer> doorCoordinates1, doorCoordinates2;
-    private ArrayList<Spawns> mobsSpawns;
+    private ArrayList<DungeonSpawn> mobsSpawns;
     private ArrayList<DungeonRules> rules;
 
 }

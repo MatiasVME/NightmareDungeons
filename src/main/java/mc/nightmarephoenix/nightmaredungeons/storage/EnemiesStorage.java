@@ -42,7 +42,6 @@ public class EnemiesStorage {
         if(dataConfig.isEmpty()) {
             reloadConfig();
         }
-
         return dataConfig;
     }
 
