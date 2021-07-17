@@ -9,8 +9,10 @@ import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.Messages;
 import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonsManager;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
+import mc.nightmarephoenix.nightmaredungeons.util.Logger;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NightmareDungeons extends JavaPlugin {
@@ -49,6 +51,10 @@ public final class NightmareDungeons extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+
+        Logger.sendMessage("Killing all bosses and enemies.");
+        for(Entity e : Global.spawnedEnemies) e.remove();
+        for(Entity e : Global.spawnedBosses) e.remove();
+
     }
 }

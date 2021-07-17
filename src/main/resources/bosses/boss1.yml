@@ -4,6 +4,7 @@ base-mob: ZOMBIE
 bossbar:
   enabled: false
   color: GREEN
+name-tag: "&cSuper &4&lBoss 1"
 health: 1000
 damage: 40
 speed: 2

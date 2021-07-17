@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Boss {
 
-    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration) {
+    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, String nametag) {
         this.enabled = enabled;
         this.baseMob = baseMob;
         this.name = name;
@@ -25,6 +25,7 @@ public class Boss {
         this.armor = armor;
         this.potionEffects = potionEffects;
         this.potionEffectsDuration = potionEffectsDuration;
+        this.nametag = nametag;
     }
 
     public boolean isEnabled() {
@@ -83,20 +84,29 @@ public class Boss {
         return potionEffectsDuration;
     }
 
-    private boolean                   enabled;
-    private String                    name;
-    private EntityType                baseMob;
-    private double                    health;
-    private double                    damage;
-    private double                    speed;
-    private boolean                   bossBarEnabled;
-    private List<String>              spawnMessage;
-    private List<String>              deathMessage;
-    private ArrayList<BossImmunities> immunities;
-    private ArrayList<ItemStack>      drops;
-    private ArmorSet                  armor;
+    public boolean isBossBarEnabled() {
+        return bossBarEnabled;
+    }
+
+    public String getNametag() {
+        return nametag;
+    }
+
+    private boolean                     enabled;
+    private String                      name;
+    private EntityType                  baseMob;
+    private double                      health;
+    private double                      damage;
+    private double                      speed;
+    private boolean                     bossBarEnabled;
+    private List<String>                spawnMessage;
+    private List<String>                deathMessage;
+    private ArrayList<BossImmunities>   immunities;
+    private ArrayList<ItemStack>        drops;
+    private ArmorSet                    armor;
     private ArrayList<PotionEffectType> potionEffects;
-    private ArrayList<Integer> potionEffectsDuration;
+    private ArrayList<Integer>          potionEffectsDuration;
+    private String                      nametag;
     // TODO: DEFENCE EFFECTS
 
 }

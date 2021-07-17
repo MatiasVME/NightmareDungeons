@@ -1,8 +1,9 @@
 package mc.nightmarephoenix.nightmaredungeons.bosses;
 
-import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
+import mc.nightmarephoenix.nightmaredungeons.util.Global;
+import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -123,7 +124,8 @@ public class BossManager {
                     drops,
                     armor,
                     potionEffects,
-                    potionEffectsDuration
+                    potionEffectsDuration,
+                    bossFile.getString("name-tag")
             ));
         });
         return bosses;
@@ -142,9 +144,16 @@ public class BossManager {
         entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         entity.damage(boss.getDamage());
 
+        entity.setCustomNameVisible(true);
+        entity.setCustomName(Utils.Color(boss.getNametag()));
+
+        entity.setCanPickupItems(false);
+
         for(PotionEffectType effect: boss.getPotionEffects()) {
             entity.addPotionEffect(effect.createEffect(10000, boss.getPotionEffectsDuration().get(boss.getPotionEffects().indexOf(effect))));
         }
+
+        Global.spawnedBosses.add(entity);
 
     }
 

@@ -2,6 +2,7 @@ package mc.nightmarephoenix.nightmaredungeons.enemies;
 
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
+import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -109,9 +110,13 @@ public class EnemiesManager {
         entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         entity.damage(enemy.getDamage());
 
+        entity.setCanPickupItems(false);
+
         for(PotionEffectType effect: enemy.getPotionEffects()) {
             entity.addPotionEffect(effect.createEffect(10000, enemy.getPotionEffectsDuration().get(enemy.getPotionEffects().indexOf(effect))));
         }
+
+        Global.spawnedEnemies.add(entity);
 
     }
 

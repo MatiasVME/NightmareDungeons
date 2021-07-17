@@ -6,7 +6,6 @@ import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
