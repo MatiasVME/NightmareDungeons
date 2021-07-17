@@ -24,6 +24,7 @@ public class CommandManager implements TabExecutor {
         // Admin
         adminSubCommands.add(new Reload());
         adminSubCommands.add(new SpawnEnemy());
+        adminSubCommands.add(new SpawnBoss());
 
     }
 
@@ -76,14 +77,16 @@ public class CommandManager implements TabExecutor {
             if(sender.hasPermission("nightmaredungeons.admin")) {
                 adminSubCommands.forEach((cmd) -> {
                     for(String subcommand: cmd.getSubCommandsArgs(sender, args)) {
-                        subcommands.add(subcommand);
+                        if(args[0].equalsIgnoreCase(cmd.getName()))
+                            subcommands.add(subcommand);
                     }
                 });
             }
             if(sender.hasPermission("nightmaredungeons.player") || sender.hasPermission("nightmaredungeons.admin")) {
                 usersSubCommands.forEach((cmd) -> {
                     for(String subcommand: cmd.getSubCommandsArgs(sender, args)) {
-                        subcommands.add(subcommand);
+                        if(args[0].equalsIgnoreCase(cmd.getName()))
+                            subcommands.add(subcommand);
                     }
                 });
             }

@@ -3,13 +3,14 @@ package mc.nightmarephoenix.nightmaredungeons.bosses;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Boss {
 
-    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor) {
+    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration) {
         this.enabled = enabled;
         this.baseMob = baseMob;
         this.name = name;
@@ -22,6 +23,8 @@ public class Boss {
         this.immunities = immunities;
         this.drops = drops;
         this.armor = armor;
+        this.potionEffects = potionEffects;
+        this.potionEffectsDuration = potionEffectsDuration;
     }
 
     public boolean isEnabled() {
@@ -72,6 +75,14 @@ public class Boss {
         return baseMob;
     }
 
+    public ArrayList<PotionEffectType> getPotionEffects() {
+        return potionEffects;
+    }
+
+    public ArrayList<Integer> getPotionEffectsDuration() {
+        return potionEffectsDuration;
+    }
+
     private boolean                   enabled;
     private String                    name;
     private EntityType                baseMob;
@@ -84,6 +95,8 @@ public class Boss {
     private ArrayList<BossImmunities> immunities;
     private ArrayList<ItemStack>      drops;
     private ArmorSet                  armor;
+    private ArrayList<PotionEffectType> potionEffects;
+    private ArrayList<Integer> potionEffectsDuration;
     // TODO: DEFENCE EFFECTS
 
 }

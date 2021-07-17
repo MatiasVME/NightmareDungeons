@@ -1,12 +1,18 @@
 package mc.nightmarephoenix.nightmaredungeons.bosses;
 
+import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -93,6 +99,16 @@ public class BossManager {
                 }
             }
 
+            ArrayList<PotionEffectType> potionEffects = new ArrayList<>();
+            ArrayList<Integer> potionEffectsDuration = new ArrayList<>();
+            if(bossFile.contains("potion-effects")) {
+                Set<String> effects = bossFile.getConfigurationSection("potion-effects").getKeys(false);
+                for(String effect: effects) {
+                    potionEffects.add(PotionEffectType.getByName(effect));
+                    potionEffectsDuration.add(bossFile.getInt("potion-effects." + effect));
+                }
+            }
+
             bosses.add(new Boss(
                     bossFile.getBoolean("enabled"),
                     EntityType.valueOf(bossFile.getString("base-mob")),
@@ -105,10 +121,31 @@ public class BossManager {
                     bossFile.getStringList("broadcast.death"),
                     immunities,
                     drops,
-                    armor
+                    armor,
+                    potionEffects,
+                    potionEffectsDuration
             ));
         });
         return bosses;
+    }
+
+    public static void spawnBoss(Boss boss, Location loc) {
+
+        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, boss.getBaseMob());
+
+        entity.getEquipment().setHelmet(boss.getArmor().getHelmet());
+        entity.getEquipment().setChestplate(boss.getArmor().getChestplate());
+        entity.getEquipment().setLeggings(boss.getArmor().getLeggings());
+        entity.getEquipment().setBoots(boss.getArmor().getBoots());
+
+        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(boss.getHealth());
+        entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+        entity.damage(boss.getDamage());
+
+        for(PotionEffectType effect: boss.getPotionEffects()) {
+            entity.addPotionEffect(effect.createEffect(10000, boss.getPotionEffectsDuration().get(boss.getPotionEffects().indexOf(effect))));
+        }
+
     }
 
 }

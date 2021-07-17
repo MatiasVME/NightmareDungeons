@@ -1,7 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.commands.subcommands;
 
-import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
-import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
+import mc.nightmarephoenix.nightmaredungeons.bosses.Boss;
+import mc.nightmarephoenix.nightmaredungeons.bosses.BossManager;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.command.CommandSender;
@@ -10,31 +10,30 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpawnEnemy extends SubCommands{
+public class SpawnBoss extends SubCommands {
     @Override
     public String getDescription() {
-        return "Spawns an enemy.";
+        return "Spawns a boss.";
     }
 
     @Override
     public String getName() {
-        return "spawnEnemy";
+        return "spawnBoss";
     }
 
     @Override
     public String syntax() {
-        return "/nd spawnEnemy [enemyName]";
+        return "/nd spawnBoss [bossName]";
     }
 
     @Override
     public List<String> getSubCommandsArgs(CommandSender sender, String[] args) {
         if(args.length == 2) {
-            ArrayList<String> enemies = new ArrayList<>();
-
-            Global.enemies.forEach((enemy -> {
-                enemies.add(enemy.getName());
+            ArrayList<String> bosses = new ArrayList<>();
+            Global.bosses.forEach((boss -> {
+                bosses.add(boss.getName());
             }));
-            return enemies;
+            return bosses;
         }
         return new ArrayList<>();
     }
@@ -45,11 +44,11 @@ public class SpawnEnemy extends SubCommands{
             Player p = (Player)sender;
             if(args.length == 2) {
                 boolean found = false;
-                for(Enemy enemy: Global.enemies) {
-                    if(args[1].equalsIgnoreCase(enemy.getName())) {
-                        EnemiesManager.spawnEnemy(enemy, p.getLocation());
+                for(Boss boss: Global.bosses) {
+                    if(args[1].equalsIgnoreCase(boss.getName())) {
+                        BossManager.spawnBoss(boss, p.getLocation());
                         found = true;
-                        sender.sendMessage(Utils.Color("&aEnemy spawned!"));
+                        sender.sendMessage(Utils.Color("&aBoss spawned!"));
                         break;
                     }
                 }

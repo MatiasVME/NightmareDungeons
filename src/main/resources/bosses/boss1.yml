@@ -43,6 +43,12 @@ broadcast:
   - 'Boss1 death message'
   - ''
 
+# List of potion effects https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
+potion-effects:
+  GLOWING: 1
+  SPEED: 3
+  INCREASE_DAMAGE: 3
+
 defence:
   immunities:
     explosion: false
