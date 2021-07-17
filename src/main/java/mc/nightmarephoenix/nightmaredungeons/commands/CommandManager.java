@@ -1,5 +1,6 @@
 package mc.nightmarephoenix.nightmaredungeons.commands;
 
+import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.Authors;
 import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.Help;
 import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.Reload;
 import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.SubCommands;
@@ -18,6 +19,7 @@ public class CommandManager implements CommandExecutor {
 
     public CommandManager() {
         usersSubCommands.add(new Help());
+        usersSubCommands.add(new Authors());
         adminSubCommands.add(new Reload());
     }
 
