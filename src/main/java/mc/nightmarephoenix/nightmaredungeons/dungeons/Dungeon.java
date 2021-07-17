@@ -18,6 +18,8 @@ public class Dungeon {
         this.top3DamagerCommands = top3DamagerCommands;
         this.boss = boss;
         this.enemies = enemies;
+        this.status = DungeonStatus.READY;
+
     }
 
     public String getName() {
@@ -72,13 +74,14 @@ public class Dungeon {
         return enemies;
     }
 
-    private String name;
-    private List<Integer> doorCoordinates1, doorCoordinates2;
+    private String                  name;
+    private List<Integer>           doorCoordinates1, doorCoordinates2;
     private ArrayList<DungeonRules> rules;
-    private List<String> top1DamagerCommands;
-    private List<String> top2DamagerCommands;
-    private List<String> top3DamagerCommands;
-    private Boss boss;
-    private ArrayList<Enemy> enemies;
+    private List<String>            top1DamagerCommands;
+    private List<String>            top2DamagerCommands;
+    private List<String>            top3DamagerCommands;
+    private Boss                    boss;
+    private ArrayList<Enemy>        enemies;
+    private DungeonStatus           status;
 
 }
