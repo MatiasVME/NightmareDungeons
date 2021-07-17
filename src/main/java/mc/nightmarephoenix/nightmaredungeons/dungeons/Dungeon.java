@@ -74,6 +74,14 @@ public class Dungeon {
         return enemies;
     }
 
+    public DungeonStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(DungeonStatus status) {
+        this.status = status;
+    }
+
     private String                  name;
     private List<Integer>           doorCoordinates1, doorCoordinates2;
     private ArrayList<DungeonRules> rules;
