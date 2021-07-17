@@ -3,6 +3,9 @@ package mc.nightmarephoenix.nightmaredungeons.commands.subcommands;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Help extends SubCommands {
     @Override
     public String getDescription() {
@@ -12,6 +15,16 @@ public class Help extends SubCommands {
     @Override
     public String getName() {
         return "help";
+    }
+
+    @Override
+    public String syntax() {
+        return "/nd";
+    }
+
+    @Override
+    public List<String> getSubCommandsArgs(CommandSender sender, String[] args) {
+        return new ArrayList<>();
     }
 
     @Override

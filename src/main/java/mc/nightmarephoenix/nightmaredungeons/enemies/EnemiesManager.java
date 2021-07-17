@@ -2,11 +2,16 @@ package mc.nightmarephoenix.nightmaredungeons.enemies;
 
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -67,16 +72,47 @@ public class EnemiesManager {
                     leggings,
                     boots
             );
+
+            ArrayList<PotionEffectType> potionEffects = new ArrayList<>();
+            ArrayList<Integer> potionEffectsDuration = new ArrayList<>();
+            if(enemyFile.contains("potion-effects")) {
+                Set<String> effects = enemyFile.getConfigurationSection("potion-effects").getKeys(false);
+                for(String effect: effects) {
+                    potionEffects.add(PotionEffectType.getByName(effect));
+                    potionEffectsDuration.add(enemyFile.getInt("potion-effects." + effect));
+                }
+            }
+
             enemies.add(new Enemy(
                     enemyFile.getString("name"),
                     EntityType.valueOf(enemyFile.getString("base-mob")),
                     enemyFile.getDouble("health"),
                     enemyFile.getDouble("damage"),
-                    enemyFile.getDouble("speed"),
-                    armor
-            ));
-        });
-        return enemies;
+                    armor,
+                    potionEffects,
+                    potionEffectsDuration
+                ));
+            });
+                return enemies;
+            }
+
+    public static void spawnEnemy(Enemy enemy, Location loc) {
+
+        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, enemy.getBaseMob());
+
+        entity.getEquipment().setHelmet(enemy.getArmor().getHelmet());
+        entity.getEquipment().setChestplate(enemy.getArmor().getChestplate());
+        entity.getEquipment().setLeggings(enemy.getArmor().getLeggings());
+        entity.getEquipment().setBoots(enemy.getArmor().getBoots());
+
+        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(enemy.getHealth());
+        entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+        entity.damage(enemy.getDamage());
+
+        for(PotionEffectType effect: enemy.getPotionEffects()) {
+            entity.addPotionEffect(effect.createEffect(10000, enemy.getPotionEffectsDuration().get(enemy.getPotionEffects().indexOf(effect))));
+        }
+
     }
 
 }

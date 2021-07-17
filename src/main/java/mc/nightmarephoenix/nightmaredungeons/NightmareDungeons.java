@@ -43,6 +43,7 @@ public final class NightmareDungeons extends JavaPlugin {
         Global.dungeons = DungeonsManager.getAllDungeons();
         Global.enemies  = EnemiesManager.getAllEnemies();
         Global.bosses   = BossManager.getAllBosses();
+        Global.messages = Messages.getConfig();
 
     }
 

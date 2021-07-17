@@ -1,9 +1,6 @@
 package mc.nightmarephoenix.nightmaredungeons.commands;
 
-import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.Authors;
-import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.Help;
-import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.Reload;
-import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.SubCommands;
+import mc.nightmarephoenix.nightmaredungeons.commands.subcommands.*;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,9 +16,15 @@ public class CommandManager implements TabExecutor {
     ArrayList<SubCommands> usersSubCommands = new ArrayList<>();
 
     public CommandManager() {
+
+        // Users
         usersSubCommands.add(new Help());
         usersSubCommands.add(new Authors());
+
+        // Admin
         adminSubCommands.add(new Reload());
+        adminSubCommands.add(new SpawnEnemy());
+
     }
 
     @Override
@@ -68,6 +71,23 @@ public class CommandManager implements TabExecutor {
                 });
             }
             return arguments;
+        } else if(args.length == 2) {
+            ArrayList<String> subcommands = new ArrayList<>();
+            if(sender.hasPermission("nightmaredungeons.admin")) {
+                adminSubCommands.forEach((cmd) -> {
+                    for(String subcommand: cmd.getSubCommandsArgs(sender, args)) {
+                        subcommands.add(subcommand);
+                    }
+                });
+            }
+            if(sender.hasPermission("nightmaredungeons.player") || sender.hasPermission("nightmaredungeons.admin")) {
+                usersSubCommands.forEach((cmd) -> {
+                    for(String subcommand: cmd.getSubCommandsArgs(sender, args)) {
+                        subcommands.add(subcommand);
+                    }
+                });
+            }
+            return subcommands;
         }
         return new ArrayList<>();
     }

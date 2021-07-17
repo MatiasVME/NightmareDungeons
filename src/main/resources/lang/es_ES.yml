@@ -1,18 +1,20 @@
 plugin-prefix: "&6&lNightmareDungeons &7- &f"
 
-reload-message: "&aConfig reloaded."
+reload-message: "&aConfiguración recargada."
 help-message:
   - "&7&m----------&r &4&lNightmareDungeons &7&m----------"
-  - "&e/nd list &fLists all dungeons"
+  - "&e/nd list &fLista todas las dungeons."
   - "&7&m----------------------------------------"
 
 help-message-admin:
   - "&7&m----------&r &4&lNightmareDungeons &7&m----------"
-  - "&e/nd reload &f Reloads the config file."
-  - "&e/nd list &fLists all dungeons"
+  - "&e/nd reload &f Recarga todas las configuraciones."
+  - "&e/nd list &fLista todas las dungeons."
   - ""
   - "&e/nd authors"
   - "&7&m----------------------------------------"
 
 unknown-command: "&4&lDungeons &7- &fUnknown command."
 not-a-player: "&cThis command must be run by a player"
+entity-not-found: "&cEntidad no encontrada! Revisa los archivos de configuración."
+command-usage: "Uso: &e"

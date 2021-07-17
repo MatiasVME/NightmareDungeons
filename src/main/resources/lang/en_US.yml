@@ -15,4 +15,6 @@ help-message-admin:
   - "&7&m---------------------------------------"
 
 unknown-command: "&fUnknown command."
-not-a-player: "&cThis command must be run by a player"
+not-a-player: "&cThis command must be run by a player."
+entity-not-found: "&cEntity not found! Check the configuration file."
+command-usage: "Usage: &e"

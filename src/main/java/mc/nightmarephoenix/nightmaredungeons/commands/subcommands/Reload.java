@@ -11,6 +11,9 @@ import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Reload extends SubCommands {
     @Override
     public String getDescription() {
@@ -20,6 +23,16 @@ public class Reload extends SubCommands {
     @Override
     public String getName() {
         return "reload";
+    }
+
+    @Override
+    public String syntax() {
+        return "/nd reload";
+    }
+
+    @Override
+    public List<String> getSubCommandsArgs(CommandSender sender, String[] args) {
+        return new ArrayList<>();
     }
 
     @Override

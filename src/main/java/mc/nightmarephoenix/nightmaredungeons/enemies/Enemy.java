@@ -2,16 +2,20 @@ package mc.nightmarephoenix.nightmaredungeons.enemies;
 
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import org.bukkit.entity.EntityType;
+import org.bukkit.potion.PotionEffectType;
+
+import java.util.ArrayList;
 
 public class Enemy {
 
-    public Enemy(String name, EntityType baseMob, double health, double damage, double speed, ArmorSet armor) {
+    public Enemy(String name, EntityType baseMob, double health, double damage, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration) {
         this.name    = name;
         this.baseMob = baseMob;
         this.health  = health;
         this.damage  = damage;
-        this.speed   = speed;
         this.armor   = armor;
+        this.potionEffects = potionEffects;
+        this.potionEffectsDuration = potionEffectsDuration;
     }
 
     public String getName() {
@@ -46,23 +50,23 @@ public class Enemy {
         this.damage = damage;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
     public ArmorSet getArmor() {
         return armor;
+    }
+
+    public ArrayList<PotionEffectType> getPotionEffects() {
+        return potionEffects;
+    }
+
+    public ArrayList<Integer> getPotionEffectsDuration() {
+        return potionEffectsDuration;
     }
 
     private String     name;
     private EntityType baseMob;
     private double     health;
     private double     damage;
-    private double     speed;
     private ArmorSet   armor;
-
+    private ArrayList<PotionEffectType> potionEffects;
+    private ArrayList<Integer> potionEffectsDuration;
 }

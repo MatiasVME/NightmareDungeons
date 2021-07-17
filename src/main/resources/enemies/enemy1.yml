@@ -1,8 +1,7 @@
-name: "Generic Zombie"
+name: "Generic_Zombie"
 base-mob: ZOMBIE
 health: 60
 damage: 40
-speed: 1.1
 armor:
   helmet:
     item: DIAMOND_HELMET
@@ -24,3 +23,8 @@ armor:
     enchants:
       UNBREAKING: 3
       PROTECTION: 4
+
+# List of potion effects https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
+potion-effects:
+  GLOWING: 1
+  SPEED: 3
