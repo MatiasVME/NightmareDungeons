@@ -12,13 +12,6 @@ public class DungeonSpawn {
         this.enemies_min = enemies_min;
     }
 
-    private String name;
-    private List<Integer> coordinates;
-    private String file;
-    private int enemies_min;
-    private int enemies_max;
-
-
     public String getName() {
         return name;
     }
@@ -58,4 +51,11 @@ public class DungeonSpawn {
     public void setEnemies_max(int enemies_max) {
         this.enemies_max = enemies_max;
     }
+
+    private String name;
+    private List<Integer> coordinates;
+    private String file;
+    private int enemies_min;
+    private int enemies_max;
+
 }

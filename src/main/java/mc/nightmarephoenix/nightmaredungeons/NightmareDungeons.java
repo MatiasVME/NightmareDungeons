@@ -1,5 +1,6 @@
 package mc.nightmarephoenix.nightmaredungeons;
 
+import mc.nightmarephoenix.nightmaredungeons.bosses.BossManager;
 import mc.nightmarephoenix.nightmaredungeons.commands.CommandManager;
 import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
@@ -41,6 +42,7 @@ public final class NightmareDungeons extends JavaPlugin {
          */
         Global.dungeons = DungeonsManager.getAllDungeons();
         Global.enemies  = EnemiesManager.getAllEnemies();
+        Global.bosses   = BossManager.getAllBosses();
 
     }
 

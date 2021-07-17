@@ -1,55 +1,38 @@
 enabled: true
-name: 'Boss1 '
-base-mob: zombie
+name: "Boss1"
+base-mob: ZOMBIE
 bossbar:
   enabled: false
   color: GREEN
-  style: SOLID
-max-health: 1000
-attack-damage: 40
-movement-speed: 2
-follow-range: 20
-auto-spawn-interval: 72000
+health: 1000
+damage: 40
+speed: 2
 armor:
   helmet:
-    type: diamond
+    item: DIAMOND_HELMET
     enchants:
-      DURABILITY: 3
-      PROTECTION_ENVIRONMENTAL: 4
+      UNBREAKING: 3
+      PROTECTION: 4
   chestplate:
-    type: diamond
+    item: DIAMOND_CHESTPLATE
     enchants:
-      DURABILITY: 3
-      PROTECTION_ENVIRONMENTAL: 4
+      UNBREAKING: 3
+      PROTECTION: 4
   leggings:
-    type: diamond
+    item: DIAMOND_LEGGINGS
     enchants:
-      DURABILITY: 3
-      PROTECTION_ENVIRONMENTAL: 4
+      UNBREAKING: 3
+      PROTECTION: 4
   boots:
-    type: diamond
+    item: DIAMOND_BOOTS
     enchants:
-      DURABILITY: 3
-      PROTECTION_ENVIRONMENTAL: 4
-rewards:
-  xp:
-    minimum: 1000
-    maximum: 5000
-  top-damager-commands:
-    '1': 
-      - 'command1'
-      - 'command2'
-    '2':
-      - 'command1'
-      - 'command2'
-    '3':
-      - 'command1'
-      - 'command2'
-  nearby-player-commands:
-    radius: 10
-    commands: 
-      - 'give %player% diamond 1'
-  drops: []
+      UNBREAKING: 3
+      PROTECTION: 4
+
+# Drops list can be found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+drops:
+  DIAMOND: 1
+  BEEF: 2
 broadcast:
   spawn:
   - ''
@@ -59,13 +42,7 @@ broadcast:
   - ''
   - 'Boss1 death message'
   - ''
-effects:
-- summon:zombie:40
-- summon:husk:40
-- give-potion-effect:poison:8:200:10
-- give-potion-effect:slow:4:100:20
-- give-potion-effect:hunger:5:400:10
-- give-potion-effect:slow_digging:3:40:10
+
 defence:
   immunities:
     explosion: false
@@ -73,3 +50,10 @@ defence:
     drowning: true
     projectiles: false
     suffocation: true
+  effects:
+    - summon:zombie:40
+    - summon:husk:40
+    - give-potion-effect:poison:8:200:10
+    - give-potion-effect:slow:4:100:20
+    - give-potion-effect:hunger:5:400:10
+    - give-potion-effect:slow_digging:3:40:10

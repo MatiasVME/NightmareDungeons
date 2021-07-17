@@ -1,5 +1,26 @@
 name: "Generic Zombie"
-mob-base: ZOMBIE
+base-mob: ZOMBIE
 health: 60
 damage: 40
 speed: 1.1
+armor:
+  helmet:
+    item: DIAMOND_HELMET
+    enchants:
+      UNBREAKING: 3
+      PROTECTION: 4
+  chestplate:
+    item: DIAMOND_CHESTPLATE
+    enchants:
+      UNBREAKING: 3
+      PROTECTION: 4
+  leggings:
+    item: DIAMOND_LEGGINGS
+    enchants:
+      UNBREAKING: 3
+      PROTECTION: 4
+  boots:
+    item: DIAMOND_BOOTS
+    enchants:
+      UNBREAKING: 3
+      PROTECTION: 4

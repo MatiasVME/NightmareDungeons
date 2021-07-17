@@ -13,6 +13,19 @@ mobs-spawn:
     enemy-file: enemy2.yml
     enemies-amount-min: 10
     enemies-amount-max: 15
+
+rewards:
+  top-damager-commands:
+    '1':
+      - 'command1'
+      - 'command2'
+    '2':
+      - 'command1'
+      - 'command2'
+    '3':
+      - 'command1'
+      - 'command2'
+
 rules:
   time: -1 # -1 No time
   no-natural-regen: false

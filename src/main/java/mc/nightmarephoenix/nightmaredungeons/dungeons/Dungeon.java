@@ -1,5 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.dungeons;
 
+import org.bukkit.inventory.ItemStack;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,5 +62,6 @@ public class Dungeon {
     private List<Integer> doorCoordinates1, doorCoordinates2;
     private ArrayList<DungeonSpawn> mobsSpawns;
     private ArrayList<DungeonRules> rules;
+    private ArrayList<String> top1DamagerCommands, top2DamagerCommands, top3DamagerCommands;
 
 }

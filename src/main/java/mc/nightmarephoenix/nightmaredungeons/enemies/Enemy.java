@@ -1,17 +1,17 @@
 package mc.nightmarephoenix.nightmaredungeons.enemies;
 
+import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import org.bukkit.entity.EntityType;
 
 public class Enemy {
 
-    public Enemy(String name, EntityType baseMob, double health, double damage, double speed) {
-
+    public Enemy(String name, EntityType baseMob, double health, double damage, double speed, ArmorSet armor) {
         this.name    = name;
         this.baseMob = baseMob;
         this.health  = health;
         this.damage  = damage;
         this.speed   = speed;
-
+        this.armor   = armor;
     }
 
     public String getName() {
@@ -54,10 +54,15 @@ public class Enemy {
         this.speed = speed;
     }
 
+    public ArmorSet getArmor() {
+        return armor;
+    }
+
     private String     name;
     private EntityType baseMob;
     private double     health;
     private double     damage;
     private double     speed;
+    private ArmorSet   armor;
 
 }
