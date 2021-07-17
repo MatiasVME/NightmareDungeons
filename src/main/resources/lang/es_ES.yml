@@ -10,6 +10,8 @@ help-message-admin:
   - "&7&m----------&r &4&lNightmareDungeons &7&m----------"
   - "&e/nd reload &f Recarga todas las configuraciones."
   - "&e/nd list &fLista todas las dungeons."
+  - "&e/nd spawnEnemy [nombre] &fHace aparecer un enemigo."
+  - "&e/nd spawnBoss [nombre] &fHace aparecer un boss."
   - ""
   - "&e/nd authors"
   - "&7&m----------------------------------------"

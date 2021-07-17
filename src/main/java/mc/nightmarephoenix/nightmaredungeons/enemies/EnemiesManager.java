@@ -91,7 +91,8 @@ public class EnemiesManager {
                     enemyFile.getDouble("damage"),
                     armor,
                     potionEffects,
-                    potionEffectsDuration
+                    potionEffectsDuration,
+                    null
                 ));
             });
                 return enemies;

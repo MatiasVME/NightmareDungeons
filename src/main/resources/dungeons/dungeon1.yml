@@ -1,18 +1,25 @@
 dungeon-name: "Dungeon1"
+world-name: world
+
 door-coords:
   pos1: [ 50, 65, 65 ]
   pos2: [ 50, 65, 65 ]
 mobs-spawn:
   spawn1:
     coords: [ 100, 60, 101 ]
-    enemy-file: enemy1.yml
+    enemy-name: "Generic_Skeleton"
     enemies-amount-min: 10
     enemies-amount-max: 15
   spawn2:
     coords: [ 200, 60, 201 ]
-    enemy-file: enemy2.yml
+    enemy-name: "Generic_Zombie"
     enemies-amount-min: 10
     enemies-amount-max: 15
+
+boss-spawn:
+  spawn:
+    coords: [ 1, 2, 3 ]
+    boss-name: "Boss1"
 
 rewards:
   top-damager-commands:

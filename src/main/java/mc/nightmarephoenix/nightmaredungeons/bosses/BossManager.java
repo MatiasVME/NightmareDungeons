@@ -130,7 +130,8 @@ public class BossManager {
                     armor,
                     potionEffects,
                     potionEffectsDuration,
-                    bossFile.getString("name-tag")
+                    bossFile.getString("name-tag"),
+                    null
             ));
         });
         return bosses;
@@ -158,8 +159,9 @@ public class BossManager {
             entity.addPotionEffect(effect.createEffect(10000, boss.getPotionEffectsDuration().get(boss.getPotionEffects().indexOf(effect))));
         }
 
-        BossBar bb = Utils.createBossBar(entity, Utils.Color(boss.getNametag()), boss.getBossBarColor());
+        BossBar bb = Utils.bossTraking(entity, Utils.Color(boss.getNametag()), boss.getBossBarColor());
 
+        // TODO: change to only the dungeons players can see the bossbar
         for(Player p : Bukkit.getOnlinePlayers()) {
             bb.addPlayer(p);
         }

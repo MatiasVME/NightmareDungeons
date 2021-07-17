@@ -10,6 +10,8 @@ help-message-admin:
   - "&7&m----------&r &4&lNightmareDungeons &7&m----------"
   - "&e/nd reload &f Reloads the config file."
   - "&e/nd list &fLists all dungeons"
+  - "&e/nd spawnEnemy [name] &fSpawns an enemy."
+  - "&e/nd spawnBoss [name] &fSpawns a boss."
   - ""
   - "&e/nd authors"
   - "&7&m---------------------------------------"

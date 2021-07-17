@@ -1,23 +1,43 @@
 dungeon-name: "Dungeon2"
+world-name: world
+
 door-coords:
   pos1: [ 50, 65, 65 ]
   pos2: [ 50, 65, 65 ]
 mobs-spawn:
   spawn1:
     coords: [ 12500, 121, 5400 ]
-    enemy-file: enemy1.yml
+    enemy-name: "Generic_Skeleton"
     enemies-amount-min: 20
     enemies-amount-max: 40
   spawn2:
     coords: [ 12750, 160, 5400 ]
-    enemy-file: enemy2.yml
+    enemy-name: "Generic_Zombie"
     enemies-amount-min: 10
     enemies-amount-max: 15
   spawn3:
     coords: [ 22750, 260, 3400 ]
-    enemy-file: enemy3.yml
+    enemy-name: "Generic_Zombie"
     enemies-amount-min: 10
     enemies-amount-max: 15
+
+boss-spawn:
+  spawn:
+    coords: [ 1, 2, 3 ]
+    boss-name: "Boss1"
+
+rewards:
+  top-damager-commands:
+    '1':
+      - 'command1'
+      - 'command2'
+    '2':
+      - 'command1'
+      - 'command2'
+    '3':
+      - 'command1'
+      - 'command2'
+
 rules:
   time: -1 # -1 No time
   no-natural-regen: true

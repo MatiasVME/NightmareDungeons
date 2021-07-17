@@ -48,19 +48,27 @@ public class Utils {
         }
     }
 
-    public static BossBar createBossBar(LivingEntity livingEntity, String title, BarColor color) {
+    public static BossBar bossTraking(LivingEntity livingEntity, String title, BarColor color) {
         BossBar bossBar = Global.plugin.getServer().createBossBar(title, color, BarStyle.SOLID);
         new BukkitRunnable() {
             @Override
             public void run() {
                 if (!livingEntity.isDead()) {
                     bossBar.setProgress(livingEntity.getHealth() / livingEntity.getMaxHealth());
-                } else {
-                    List<Player> players = bossBar.getPlayers();
-                    for (Player player : players) {
+                } else { // When the boss dies
+                    // Remove the bossbar for all players.
+                    for (Player player : bossBar.getPlayers()) {
                         bossBar.removePlayer(player);
                     }
                     bossBar.setVisible(false);
+
+                    System.out.println(livingEntity.getKiller());
+
+
+
+
+
+
                     cancel();
                 }
             }

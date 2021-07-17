@@ -1,6 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.bosses;
 
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
+import org.bukkit.Location;
 import org.bukkit.boss.BarColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class Boss {
 
-    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, BarColor bossBarColor, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, String nametag) {
+    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, BarColor bossBarColor, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, String nametag, Location spawnLocation) {
         this.enabled = enabled;
         this.baseMob = baseMob;
         this.name = name;
@@ -28,6 +29,7 @@ public class Boss {
         this.potionEffects = potionEffects;
         this.potionEffectsDuration = potionEffectsDuration;
         this.nametag = nametag;
+        this.spawnLocation = spawnLocation;
     }
 
     public boolean isEnabled() {
@@ -98,6 +100,14 @@ public class Boss {
         return bossBarColor;
     }
 
+    public Location getSpawnLocation() {
+        return spawnLocation;
+    }
+
+    public void setSpawnLocation(Location spawnLocation) {
+        this.spawnLocation = spawnLocation;
+    }
+
     private boolean                     enabled;
     private String                      name;
     private EntityType                  baseMob;
@@ -114,6 +124,8 @@ public class Boss {
     private ArrayList<PotionEffectType> potionEffects;
     private ArrayList<Integer>          potionEffectsDuration;
     private String                      nametag;
+    private Location                    spawnLocation;
+
     // TODO: DEFENCE EFFECTS
 
 }

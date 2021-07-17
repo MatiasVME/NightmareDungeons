@@ -1,6 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.enemies;
 
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
+import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffectType;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 public class Enemy {
 
-    public Enemy(String name, EntityType baseMob, double health, double damage, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration) {
+    public Enemy(String name, EntityType baseMob, double health, double damage, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, Location spawnLocation) {
         this.name    = name;
         this.baseMob = baseMob;
         this.health  = health;
@@ -16,6 +17,7 @@ public class Enemy {
         this.armor   = armor;
         this.potionEffects = potionEffects;
         this.potionEffectsDuration = potionEffectsDuration;
+        this.spawnLocation = spawnLocation;
     }
 
     public String getName() {
@@ -62,6 +64,14 @@ public class Enemy {
         return potionEffectsDuration;
     }
 
+    public Location getSpawnLocation() {
+        return spawnLocation;
+    }
+
+    public void setSpawnLocation(Location spawnLocation) {
+        this.spawnLocation = spawnLocation;
+    }
+
     private String     name;
     private EntityType baseMob;
     private double     health;
@@ -69,4 +79,5 @@ public class Enemy {
     private ArmorSet   armor;
     private ArrayList<PotionEffectType> potionEffects;
     private ArrayList<Integer> potionEffectsDuration;
+    private Location spawnLocation;
 }
