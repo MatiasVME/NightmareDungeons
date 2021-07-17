@@ -4,13 +4,17 @@ import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BossBar;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
@@ -118,6 +122,7 @@ public class BossManager {
                     bossFile.getDouble("damage"),
                     bossFile.getDouble("speed"),
                     bossFile.getBoolean("bossbar.enabled"),
+                    BarColor.valueOf(bossFile.getString("bossbar.color")),
                     bossFile.getStringList("broadcast.spawn"),
                     bossFile.getStringList("broadcast.death"),
                     immunities,
@@ -153,7 +158,14 @@ public class BossManager {
             entity.addPotionEffect(effect.createEffect(10000, boss.getPotionEffectsDuration().get(boss.getPotionEffects().indexOf(effect))));
         }
 
+        BossBar bb = Utils.createBossBar(entity, Utils.Color(boss.getNametag()), boss.getBossBarColor());
+
+        for(Player p : Bukkit.getOnlinePlayers()) {
+            bb.addPlayer(p);
+        }
+
         Global.spawnedBosses.add(entity);
+        Global.bossBars.add(bb);
 
     }
 

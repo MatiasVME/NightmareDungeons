@@ -12,6 +12,7 @@ import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Logger;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Entity;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -55,6 +56,9 @@ public final class NightmareDungeons extends JavaPlugin {
         Logger.sendMessage("Killing all bosses and enemies.");
         for(Entity e : Global.spawnedEnemies) e.remove();
         for(Entity e : Global.spawnedBosses) e.remove();
+
+        Logger.sendMessage("Removing all bossBars.");
+        for(BossBar b : Global.bossBars) b.removeAll();
 
     }
 }

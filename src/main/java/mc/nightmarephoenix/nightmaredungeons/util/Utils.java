@@ -2,7 +2,13 @@ package mc.nightmarephoenix.nightmaredungeons.util;
 
 import mc.nightmarephoenix.nightmaredungeons.storage.Messages;
 import org.bukkit.ChatColor;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
@@ -40,6 +46,26 @@ public class Utils {
         for(String line: Messages.getConfig().getStringList(message)) {
             sender.sendMessage(Utils.Color(line));
         }
+    }
+
+    public static BossBar createBossBar(LivingEntity livingEntity, String title, BarColor color) {
+        BossBar bossBar = Global.plugin.getServer().createBossBar(title, color, BarStyle.SOLID);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!livingEntity.isDead()) {
+                    bossBar.setProgress(livingEntity.getHealth() / livingEntity.getMaxHealth());
+                } else {
+                    List<Player> players = bossBar.getPlayers();
+                    for (Player player : players) {
+                        bossBar.removePlayer(player);
+                    }
+                    bossBar.setVisible(false);
+                    cancel();
+                }
+            }
+        }.runTaskTimer(Global.plugin, 0, 1);
+        return bossBar;
     }
 
 }

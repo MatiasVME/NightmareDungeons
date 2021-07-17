@@ -1,6 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.bosses;
 
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
+import org.bukkit.boss.BarColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class Boss {
 
-    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, String nametag) {
+    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, BarColor bossBarColor, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, String nametag) {
         this.enabled = enabled;
         this.baseMob = baseMob;
         this.name = name;
@@ -18,6 +19,7 @@ public class Boss {
         this.damage = damage;
         this.speed = speed;
         this.bossBarEnabled = bossBarEnabled;
+        this.bossBarColor = bossBarColor;
         this.spawnMessage = spawnMessage;
         this.deathMessage = deathMessage;
         this.immunities = immunities;
@@ -92,6 +94,10 @@ public class Boss {
         return nametag;
     }
 
+    public BarColor getBossBarColor() {
+        return bossBarColor;
+    }
+
     private boolean                     enabled;
     private String                      name;
     private EntityType                  baseMob;
@@ -99,6 +105,7 @@ public class Boss {
     private double                      damage;
     private double                      speed;
     private boolean                     bossBarEnabled;
+    private BarColor                    bossBarColor;
     private List<String>                spawnMessage;
     private List<String>                deathMessage;
     private ArrayList<BossImmunities>   immunities;
