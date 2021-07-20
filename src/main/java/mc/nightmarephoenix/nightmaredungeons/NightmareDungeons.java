@@ -15,10 +15,10 @@ import mc.nightmarephoenix.nightmaredungeons.storage.Messages;
 import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonsManager;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Logger;
+import mc.nightmarephoenix.nightmaredungeons.util.UpdateChecker;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BossBar;
-import org.bukkit.entity.Entity;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NightmareDungeons extends JavaPlugin {
@@ -61,6 +61,18 @@ public final class NightmareDungeons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BossHurtEvent(), this);
         getServer().getPluginManager().registerEvents(new EnemyDeath(), this);
         getServer().getPluginManager().registerEvents(new BossDeath(), this);
+
+
+        /**
+         * Update checker
+         */
+//        new UpdateChecker(0).getVersion(version -> {
+//            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+//                Logger.sendMessage("There is not a new update available.");
+//            } else {
+//                Logger.sendMessage("There is a new update available.");
+//            }
+//        });
 
     }
 

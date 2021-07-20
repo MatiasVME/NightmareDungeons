@@ -12,6 +12,7 @@ help-message-admin:
   - "&e/nd list &fLists all dungeons"
   - "&e/nd spawnEnemy [name] &fSpawns an enemy."
   - "&e/nd spawnBoss [name] &fSpawns a boss."
+  - "&e/nd version &fPlugin version"
   - ""
   - "&e/nd authors"
   - "&7&m---------------------------------------"

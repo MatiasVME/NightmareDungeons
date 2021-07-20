@@ -1,5 +1,5 @@
 name: NightmareDungeons
-version: 0.0
+version: 0.0.0
 main: mc.nightmarephoenix.nightmaredungeons.NightmareDungeons
 api-version: 1.17
 prefix: [NightmareDungeons]

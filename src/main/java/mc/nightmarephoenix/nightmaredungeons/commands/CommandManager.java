@@ -20,6 +20,7 @@ public class CommandManager implements TabExecutor {
         // Users
         usersSubCommands.add(new Help());
         usersSubCommands.add(new Authors());
+        usersSubCommands.add(new Version());
 
         // Admin
         adminSubCommands.add(new Reload());
