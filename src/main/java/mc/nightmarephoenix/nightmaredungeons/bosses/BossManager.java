@@ -162,11 +162,15 @@ public class BossManager {
             entity.addPotionEffect(effect.createEffect(10000, boss.getPotionEffectsDuration().get(boss.getPotionEffects().indexOf(effect))));
         }
 
-        BossBar bb = Utils.bossTraking(entity, Utils.Color(boss.getNametag()), boss.getBossBarColor());
+        BossBar bb = Utils.bossbar(entity, Utils.Color(boss.getNametag()), boss.getBossBarColor());
 
         // TODO: change to only the dungeons players can see the bossbar
         for(Player p : Bukkit.getOnlinePlayers()) {
             bb.addPlayer(p);
+        }
+
+        for(String line : boss.getSpawnMessage()) {
+            Bukkit.getServer().broadcastMessage(Utils.Color(line));
         }
 
         boss.setEntity(entity);

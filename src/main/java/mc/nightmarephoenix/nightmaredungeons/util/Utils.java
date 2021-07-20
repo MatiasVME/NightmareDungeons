@@ -48,7 +48,7 @@ public class Utils {
         }
     }
 
-    public static BossBar bossTraking(LivingEntity livingEntity, String title, BarColor color) {
+    public static BossBar bossbar(LivingEntity livingEntity, String title, BarColor color) {
         BossBar bossBar = Global.plugin.getServer().createBossBar(title, color, BarStyle.SOLID);
         new BukkitRunnable() {
             @Override
@@ -61,14 +61,6 @@ public class Utils {
                         bossBar.removePlayer(player);
                     }
                     bossBar.setVisible(false);
-
-                    System.out.println(livingEntity.getKiller());
-
-
-
-
-
-
                     cancel();
                 }
             }

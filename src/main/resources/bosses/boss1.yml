@@ -48,11 +48,12 @@ death-commands:
 broadcast:
   spawn:
   - ''
-  - 'Boss1 spawn message'
+  - 'Boss1 &aspawn &fmessage'
   - ''
   death:
   - ''
-  - 'Boss1 death message'
+  - 'Boss1 &4death&f message'
+  - '&eKiller: &f%killer%'
   - ''
 
 # List of potion effects https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
