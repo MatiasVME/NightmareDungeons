@@ -30,10 +30,18 @@ armor:
       UNBREAKING: 3
       PROTECTION: 4
 
-# Drops list can be found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# Item list: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+#
+# For default drops use:
+# drops: "MC-DEFAULT"
+#
+# To not drop anything use
+# drops:
+#   AIR: 0
 drops:
-  DIAMOND: 1
-  BEEF: 2
+  GOLD_BLOCK: 1
+  DIAMOND_BLOCK: 2
+
 broadcast:
   spawn:
   - ''

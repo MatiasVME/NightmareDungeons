@@ -98,9 +98,11 @@ public class BossManager {
 
             ArrayList<ItemStack> drops = new ArrayList<>();
             if(bossFile.contains("drops")) {
-                Set<String> itemDrops = bossFile.getConfigurationSection("drops").getKeys(false);
-                for(String drop: itemDrops) {
-                    drops.add(new ItemStack(Material.valueOf(drop), bossFile.getInt("drops." + drop)));
+                if(!bossFile.getString("drops").equalsIgnoreCase("MC-DEFAULT")) {
+                    Set<String> itemDrops = bossFile.getConfigurationSection("drops").getKeys(false);
+                    for(String drop: itemDrops) {
+                        drops.add(new ItemStack(Material.valueOf(drop), bossFile.getInt("drops." + drop)));
+                    }
                 }
             }
 

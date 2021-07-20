@@ -5,6 +5,7 @@ import mc.nightmarephoenix.nightmaredungeons.bosses.BossManager;
 import mc.nightmarephoenix.nightmaredungeons.commands.CommandManager;
 import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
 import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
+import mc.nightmarephoenix.nightmaredungeons.events.BossDeath;
 import mc.nightmarephoenix.nightmaredungeons.events.BossHurtEvent;
 import mc.nightmarephoenix.nightmaredungeons.events.EnemyDeath;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
@@ -59,7 +60,7 @@ public final class NightmareDungeons extends JavaPlugin {
          */
         getServer().getPluginManager().registerEvents(new BossHurtEvent(), this);
         getServer().getPluginManager().registerEvents(new EnemyDeath(), this);
-
+        getServer().getPluginManager().registerEvents(new BossDeath(), this);
 
     }
 

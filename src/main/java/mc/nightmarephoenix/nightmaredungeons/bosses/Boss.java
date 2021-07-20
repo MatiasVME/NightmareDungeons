@@ -134,8 +134,7 @@ public class Boss {
     private ArrayList<Integer>          potionEffectsDuration;
     private String                      nametag;
     private Location                    spawnLocation;
-    private Entity entity;
-
+    private Entity                      entity;
     // TODO: DEFENCE EFFECTS
 
 }
