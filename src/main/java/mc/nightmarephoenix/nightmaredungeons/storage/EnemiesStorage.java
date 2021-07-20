@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class EnemiesStorage {
 
-    private static final String defaultEnemies[] = {"Generic_Zombie.yml", "Generic_Skeleton.yml"};
+    private static final String defaultEnemies[] = {"Generic_Skeleton.yml", "Generic_Zombie.yml"};
 
     public EnemiesStorage() {
         saveDefaultConfig();

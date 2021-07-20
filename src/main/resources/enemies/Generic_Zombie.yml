@@ -32,7 +32,9 @@ potion-effects:
 # Item list: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
 #
 # For default drops use:
-# drops: MC-DEFAULT
-drops: MC-DEFAULT
-  #APPLE: 1
-  #BEEF: 32
+# drops: "MC-DEFAULT"
+#
+# To not drop anything use
+# drops:
+#   AIR: 0
+drops: "MC-DEFAULT"

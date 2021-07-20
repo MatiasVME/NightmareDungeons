@@ -9,7 +9,6 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
@@ -87,9 +86,11 @@ public class EnemiesManager {
 
             ArrayList<ItemStack> drops = new ArrayList<>();
             if(enemyFile.contains("drops")) {
-                Set<String> dropsString = enemyFile.getConfigurationSection("drops").getKeys(false);
-                for(String drop : dropsString) {
-                    drops.add(new ItemStack(Material.getMaterial(drop), enemyFile.getInt("drops." + drop)));
+                if(!enemyFile.getString("drops").equalsIgnoreCase("MC-DEFAULT")) {
+                    Set<String> dropsString = enemyFile.getConfigurationSection("drops").getKeys(false);
+                    for(String drop : dropsString) {
+                        drops.add(new ItemStack(Material.getMaterial(drop), enemyFile.getInt("drops." + drop)));
+                    }
                 }
             }
 

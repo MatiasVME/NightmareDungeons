@@ -65,13 +65,16 @@ public final class NightmareDungeons extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        try {
+            Logger.sendMessage("Killing all bosses and enemies.");
+            for(Enemy e : Global.spawnedEnemies) e.getEntity().remove();
+            for(Boss e : Global.spawnedBosses) e.getEntity().remove();
 
-        Logger.sendMessage("Killing all bosses and enemies.");
-        for(Enemy e : Global.spawnedEnemies) e.getEntity().remove();
-        for(Boss e : Global.spawnedBosses) e.getEntity().remove();
-
-        Logger.sendMessage("Removing all bossBars.");
-        for(BossBar b : Global.bossBars) b.removeAll();
+            Logger.sendMessage("Removing all bossBars.");
+            for(BossBar b : Global.bossBars) b.removeAll();
+        } catch (Exception e) {
+            System.out.println("Error unloading NightmareDungeons plugin.");
+        }
 
     }
 }

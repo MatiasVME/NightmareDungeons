@@ -7,6 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+
 public class EnemyDeath implements Listener {
 
     @EventHandler
@@ -14,13 +16,16 @@ public class EnemyDeath implements Listener {
 
         for(Enemy enemy : Global.spawnedEnemies) {
             if(enemy.getEntity().equals(event.getEntity())) {
-                event.getDrops().clear();
+                ArrayList<ItemStack> drops = enemy.getDrops();
+                if(!drops.isEmpty()) {
+                    event.getDrops().clear();
 
-                for(ItemStack is : enemy.getDrops()) {
-                    event.getEntity().getLocation().getWorld().dropItem(
-                            event.getEntity().getLocation(),
-                            is
-                    );
+                    for(ItemStack is : drops) {
+                        event.getEntity().getLocation().getWorld().dropItem(
+                                event.getEntity().getLocation(),
+                                is
+                        );
+                    }
                 }
                 break;
             }
