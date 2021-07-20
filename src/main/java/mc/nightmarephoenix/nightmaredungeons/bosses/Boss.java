@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Boss {
 
-    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, BarColor bossBarColor, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, String nametag, Location spawnLocation) {
+    public Boss(boolean enabled, EntityType baseMob, String name, double health, double damage, double speed, boolean bossBarEnabled, BarColor bossBarColor, List<String> spawnMessage, List<String> deathMessage, ArrayList<BossImmunities> immunities, ArrayList<ItemStack> drops, List<String> deathCommands, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, String nametag, Location spawnLocation) {
         this.enabled = enabled;
         this.baseMob = baseMob;
         this.name = name;
@@ -26,6 +26,7 @@ public class Boss {
         this.deathMessage = deathMessage;
         this.immunities = immunities;
         this.drops = drops;
+        this.deathCommands = deathCommands;
         this.armor = armor;
         this.potionEffects = potionEffects;
         this.potionEffectsDuration = potionEffectsDuration;
@@ -117,6 +118,10 @@ public class Boss {
         this.entity = entity;
     }
 
+    public List<String> getDeathCommands() {
+        return deathCommands;
+    }
+
     private boolean                     enabled;
     private String                      name;
     private EntityType                  baseMob;
@@ -129,6 +134,7 @@ public class Boss {
     private List<String>                deathMessage;
     private ArrayList<BossImmunities>   immunities;
     private ArrayList<ItemStack>        drops;
+    private List<String>                deathCommands;
     private ArmorSet                    armor;
     private ArrayList<PotionEffectType> potionEffects;
     private ArrayList<Integer>          potionEffectsDuration;

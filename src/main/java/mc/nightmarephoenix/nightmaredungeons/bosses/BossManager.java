@@ -129,6 +129,7 @@ public class BossManager {
                     bossFile.getStringList("broadcast.death"),
                     immunities,
                     drops,
+                    bossFile.getStringList("death-commands"),
                     armor,
                     potionEffects,
                     potionEffectsDuration,

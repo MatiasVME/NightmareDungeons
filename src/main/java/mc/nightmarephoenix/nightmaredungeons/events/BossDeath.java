@@ -2,6 +2,7 @@ package mc.nightmarephoenix.nightmaredungeons.events;
 
 import mc.nightmarephoenix.nightmaredungeons.bosses.Boss;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -27,6 +28,11 @@ public class BossDeath implements Listener {
                         );
                     }
                 }
+
+                for(String cmd : boss.getDeathCommands()) {
+                    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), cmd);
+                }
+
                 break;
             }
         }

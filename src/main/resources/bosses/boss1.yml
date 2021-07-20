@@ -41,6 +41,9 @@ armor:
 drops:
   GOLD_BLOCK: 1
   DIAMOND_BLOCK: 2
+death-commands:
+  - "say hello world"
+  - "bc boss1 command"
 
 broadcast:
   spawn:
