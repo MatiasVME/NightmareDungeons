@@ -11,3 +11,8 @@ commands:
     usage: /nd
     permission: nightmaredungeons.player
     permission-message: You don't have <permission>
+  dungeons:
+    description: NightmareDungeons command
+    usage: /dungeons
+    permission: nightmaredungeons.player
+    permission-message: You don't have <permission>

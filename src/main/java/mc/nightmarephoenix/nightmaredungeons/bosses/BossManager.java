@@ -166,7 +166,9 @@ public class BossManager {
             bb.addPlayer(p);
         }
 
-        Global.spawnedBosses.add(entity);
+        boss.setEntity(entity);
+
+        Global.spawnedBosses.add(boss);
         Global.bossBars.add(bb);
 
     }

@@ -1,9 +1,12 @@
 package mc.nightmarephoenix.nightmaredungeons;
 
+import mc.nightmarephoenix.nightmaredungeons.bosses.Boss;
 import mc.nightmarephoenix.nightmaredungeons.bosses.BossManager;
 import mc.nightmarephoenix.nightmaredungeons.commands.CommandManager;
 import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
+import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
 import mc.nightmarephoenix.nightmaredungeons.events.BossHurtEvent;
+import mc.nightmarephoenix.nightmaredungeons.events.EnemyDeath;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.DungeonsStorage;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
@@ -30,6 +33,8 @@ public final class NightmareDungeons extends JavaPlugin {
          * Loading commands
          */
         this.getCommand("nd").setExecutor(new CommandManager());
+        this.getCommand("dungeons").setExecutor(new CommandManager());
+
 
         /**
          * Default config files
@@ -49,7 +54,12 @@ public final class NightmareDungeons extends JavaPlugin {
         Global.dungeons = DungeonsManager.getAllDungeons();
         Global.messages = Messages.getConfig();
 
+        /**
+         * Events
+         */
         getServer().getPluginManager().registerEvents(new BossHurtEvent(), this);
+        getServer().getPluginManager().registerEvents(new EnemyDeath(), this);
+
 
     }
 
@@ -57,8 +67,8 @@ public final class NightmareDungeons extends JavaPlugin {
     public void onDisable() {
 
         Logger.sendMessage("Killing all bosses and enemies.");
-        for(Entity e : Global.spawnedEnemies) e.remove();
-        for(Entity e : Global.spawnedBosses) e.remove();
+        for(Enemy e : Global.spawnedEnemies) e.getEntity().remove();
+        for(Boss e : Global.spawnedBosses) e.getEntity().remove();
 
         Logger.sendMessage("Removing all bossBars.");
         for(BossBar b : Global.bossBars) b.removeAll();

@@ -3,6 +3,7 @@ package mc.nightmarephoenix.nightmaredungeons.bosses;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import org.bukkit.Location;
 import org.bukkit.boss.BarColor;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
@@ -108,6 +109,14 @@ public class Boss {
         this.spawnLocation = spawnLocation;
     }
 
+    public Entity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(Entity entity) {
+        this.entity = entity;
+    }
+
     private boolean                     enabled;
     private String                      name;
     private EntityType                  baseMob;
@@ -125,6 +134,7 @@ public class Boss {
     private ArrayList<Integer>          potionEffectsDuration;
     private String                      nametag;
     private Location                    spawnLocation;
+    private Entity entity;
 
     // TODO: DEFENCE EFFECTS
 

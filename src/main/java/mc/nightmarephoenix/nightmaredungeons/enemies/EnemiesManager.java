@@ -9,6 +9,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
@@ -84,6 +85,14 @@ public class EnemiesManager {
                 }
             }
 
+            ArrayList<ItemStack> drops = new ArrayList<>();
+            if(enemyFile.contains("drops")) {
+                Set<String> dropsString = enemyFile.getConfigurationSection("drops").getKeys(false);
+                for(String drop : dropsString) {
+                    drops.add(new ItemStack(Material.getMaterial(drop), enemyFile.getInt("drops." + drop)));
+                }
+            }
+
             enemies.add(new Enemy(
                     enemyFile.getString("name"),
                     EntityType.valueOf(enemyFile.getString("base-mob")),
@@ -92,7 +101,8 @@ public class EnemiesManager {
                     armor,
                     potionEffects,
                     potionEffectsDuration,
-                    null
+                    null,
+                    drops
                 ));
             });
                 return enemies;
@@ -117,8 +127,16 @@ public class EnemiesManager {
             entity.addPotionEffect(effect.createEffect(10000, enemy.getPotionEffectsDuration().get(enemy.getPotionEffects().indexOf(effect))));
         }
 
-        Global.spawnedEnemies.add(entity);
+        enemy.setEntity(entity);
 
+        Global.spawnedEnemies.add(enemy);
+
+    }
+
+    public static void spawnEnemies(ArrayList<Enemy> enemies) {
+        for(Enemy enemy : enemies) {
+            spawnEnemy(enemy, enemy.getSpawnLocation());
+        }
     }
 
 }

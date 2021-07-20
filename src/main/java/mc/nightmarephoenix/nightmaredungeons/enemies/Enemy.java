@@ -2,14 +2,16 @@ package mc.nightmarephoenix.nightmaredungeons.enemies;
 
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 
 public class Enemy {
 
-    public Enemy(String name, EntityType baseMob, double health, double damage, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, Location spawnLocation) {
+    public Enemy(String name, EntityType baseMob, double health, double damage, ArmorSet armor, ArrayList<PotionEffectType> potionEffects, ArrayList<Integer> potionEffectsDuration, Location spawnLocation, ArrayList<ItemStack> drops) {
         this.name    = name;
         this.baseMob = baseMob;
         this.health  = health;
@@ -18,6 +20,7 @@ public class Enemy {
         this.potionEffects = potionEffects;
         this.potionEffectsDuration = potionEffectsDuration;
         this.spawnLocation = spawnLocation;
+        this.drops = drops;
     }
 
     public String getName() {
@@ -72,12 +75,26 @@ public class Enemy {
         this.spawnLocation = spawnLocation;
     }
 
-    private String     name;
-    private EntityType baseMob;
-    private double     health;
-    private double     damage;
-    private ArmorSet   armor;
+    public Entity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(Entity entity) {
+        this.entity = entity;
+    }
+
+    public ArrayList<ItemStack> getDrops() {
+        return this.drops;
+    }
+
+    private String                      name;
+    private EntityType                  baseMob;
+    private double                      health;
+    private double                      damage;
+    private ArmorSet                    armor;
     private ArrayList<PotionEffectType> potionEffects;
-    private ArrayList<Integer> potionEffectsDuration;
-    private Location spawnLocation;
+    private ArrayList<Integer>          potionEffectsDuration;
+    private Location                    spawnLocation;
+    private Entity                      entity;
+    private ArrayList<ItemStack>        drops;
 }
