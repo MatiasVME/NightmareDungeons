@@ -16,8 +16,8 @@ public class Utils {
 
     /**
      * Translates the color codes.
-     * @param str
-     * @return
+     * @param str string with & passed
+     * @return formatted string
      */
     public static String Color(String str) {
         return ChatColor.translateAlternateColorCodes('§', str.replace("&", "§"));
@@ -25,8 +25,8 @@ public class Utils {
 
     /**
      * Same as above but with a list.
-     * @param strList
-     * @return
+     * @param strList list of strings with &
+     * @return formatted list of strings
      */
     public static List<String> Color(List<String> strList) {
         for(String string: strList) {

@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/../nf/1.17Server/plugins</output-path>
     <root id="archive" name="NightmareDungeons.jar">
       <element id="module-output" name="NightmareDungeons.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tchristofferson/ConfigUpdater/1.2-SNAPSHOT/e4646836313696ad52fc26d3cccec6a7bfe86f52/ConfigUpdater-1.2-SNAPSHOT.jar" path-in-jar="/" />
       <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
     </root>
   </artifact>

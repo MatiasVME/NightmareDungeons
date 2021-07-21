@@ -1,10 +1,13 @@
 package mc.nightmarephoenix.nightmaredungeons.storage;
 
+import com.tchristofferson.configupdater.ConfigUpdater;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BossesStorage {
 
@@ -71,6 +74,35 @@ public class BossesStorage {
                         false
                 );
             }
+        }
+    }
+
+    public static void checkUpdate() {
+        File folder = new File(Global.plugin.getDataFolder() + File.separator + "bosses");
+        for(File bossFile : folder.listFiles()) {
+            File configFile = new File(folder, bossFile.getName());
+            try {
+                List<String> ignoredFields = new ArrayList<>();
+                ignoredFields.addAll(
+                        Arrays.asList(
+                                "armor",
+                                "potion-effects",
+                                "drops",
+                                "death-commands",
+                                "broadcast",
+                                "defence.effects"
+                        ));
+
+                ConfigUpdater.update(
+                        Global.plugin,
+                        "bosses" + File.separator + "boss1.yml",
+                        configFile,
+                        ignoredFields
+                );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            reloadConfig();
         }
     }
 

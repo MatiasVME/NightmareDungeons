@@ -1,10 +1,13 @@
 package mc.nightmarephoenix.nightmaredungeons.storage;
 
+import com.tchristofferson.configupdater.ConfigUpdater;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class EnemiesStorage {
 
@@ -70,6 +73,33 @@ public class EnemiesStorage {
                         false
                 );
             }
+        }
+    }
+
+    public static void checkUpdate() {
+        File folder = new File(Global.plugin.getDataFolder() + File.separator + "enemies");
+        for(File enemyFile : folder.listFiles()) {
+            File configFile = new File(folder, enemyFile.getName());
+
+            List<String> ignoredFields = new ArrayList<>();
+            ignoredFields.addAll(
+                    Arrays.asList(
+                            "armor",
+                            "potion-effects",
+                            "drops"
+                    ));
+
+            try {
+                ConfigUpdater.update(
+                        Global.plugin,
+                        "enemies" + File.separator + "Generic_Skeleton.yml",
+                        configFile,
+                        ignoredFields
+                );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            reloadConfig();
         }
     }
 
