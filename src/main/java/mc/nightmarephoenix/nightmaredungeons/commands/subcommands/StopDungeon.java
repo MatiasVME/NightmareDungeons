@@ -15,20 +15,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class StartDungeon extends SubCommands {
+public class StopDungeon extends SubCommands {
     @Override
     public String getDescription() {
-        return "Forces the start of a dungeon.";
+        return "Forces the stop of a dungeon.";
     }
 
     @Override
     public String getName() {
-        return "startDungeon";
+        return "stopDungeon";
     }
 
     @Override
     public String syntax() {
-        return "/nd startDungeon [dungeon]";
+        return "/nd stopDungeon [dungeon]";
     }
 
     @Override
@@ -45,21 +45,16 @@ public class StartDungeon extends SubCommands {
         if(args.length == 2) {
             Dungeon dungeon = DungeonsManager.getDungeonByName(args[1]);
             if(dungeon != null) {
-                if(!dungeon.getStatus().equals(DungeonStatus.COOL_DOWN)) {
+                if(dungeon.getStatus().equals(DungeonStatus.IN_PROGRESS) || dungeon.getStatus().equals(DungeonStatus.READY)) {
                     for(Enemy e : Global.spawnedEnemies) e.getEntity().remove();
                     for(Boss e : Global.spawnedBosses) e.getEntity().remove();
-                }
-                EnemiesManager.spawnEnemies(dungeon.getEnemies());
-
-                if(!dungeon.spawnBossAfterAllEnemiesDie()) {
-                    BossManager.spawnBoss(dungeon.getBoss(), dungeon.getBoss().getSpawnLocation());
                 }
 
                 HashMap<String, String> placeholder = new HashMap<>();
                 placeholder.put("%dungeonName%", dungeon.getName());
-                Utils.sendConfigMessage("dungeon-force-start", sender, placeholder);
+                Utils.sendConfigMessage("dungeon-force-stop", sender, placeholder);
 
-                dungeon.setStatus(DungeonStatus.READY);
+                dungeon.setStatus(DungeonStatus.COOL_DOWN);
 
             } else {
                 Utils.sendConfigMessage("invalid-dungeon", sender);
@@ -67,5 +62,6 @@ public class StartDungeon extends SubCommands {
         } else {
             sender.sendMessage(Utils.Color("&eUsage: &f" + syntax()));
         }
+
     }
 }

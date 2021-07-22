@@ -45,19 +45,27 @@ public class Utils {
         ));
     }
 
-    public static void sendConfigMessage(String str, CommandSender sender, HashMap<String, String> placeholders) {
-        String message = Messages.getConfig().getString(str);
-
+    public static void sendMessage(String message, CommandSender sender, HashMap<String, String> placeholders, boolean prefix) {
         for (Map.Entry<String, String> entry : placeholders.entrySet()) {
             String toReplace = entry.getKey();
             String target = entry.getValue();
             message = message.replaceAll(toReplace, target);
         }
-
         sender.sendMessage(
-                Color(Messages.getConfig().getString("plugin-prefix")) +
+                (prefix) ? Color(Messages.getConfig().getString("plugin-prefix")) : "" +
                         Color(message)
         );
+    }
+
+    public static void sendConfigMessage(String str, CommandSender sender, HashMap<String, String> placeholders) {
+        String message = Messages.getConfig().getString(str);
+        sendMessage(message, sender, placeholders, true);
+    }
+
+    public static void sendConfigMultilineMessage(String message, CommandSender sender, HashMap<String, String> placeholders) {
+        for(String line: Messages.getConfig().getStringList(message)) {
+            sendMessage(line, sender, placeholders, false);
+        }
     }
 
     public static void sendConfigMultilineMessage(String message, CommandSender sender) {

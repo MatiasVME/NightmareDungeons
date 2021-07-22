@@ -12,10 +12,16 @@ help-message-admin:
   - "&e/nd list &fLists all dungeons"
   - "&e/nd spawnEnemy [name] &fSpawns an enemy."
   - "&e/nd spawnBoss [name] &fSpawns a boss."
+  - "&e/nd startDungeon [dungeon] &fStarts a dungeon."
   - "&e/nd version &fPlugin version"
   - ""
   - "&e/nd authors"
   - "&7&m---------------------------------------"
+
+list-all-dungeons:
+  - "&7&m----------&r &4&lNightmareDungeons &7&m----------"
+  - "%dungeons%"
+  - "&7&m----------------------------------------"
 
 unknown-command: "&fUnknown command."
 not-a-player: "&cThis command must be run by a player."
@@ -23,3 +29,4 @@ entity-not-found: "&cEntity not found! Check the configuration file."
 command-usage: "Usage: &e"
 invalid-dungeon: "&cInvalid dungeon! Check your config files (NighmareDungeons/dungeons)"
 dungeon-force-start: "&aDungeon %dungeonName% started!"
+dungeon-force-stop: "&cDungeon %dungeonName% stopped!"

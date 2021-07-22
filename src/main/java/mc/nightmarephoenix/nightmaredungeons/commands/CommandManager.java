@@ -21,12 +21,14 @@ public class CommandManager implements TabExecutor {
         usersSubCommands.add(new Help());
         usersSubCommands.add(new Authors());
         usersSubCommands.add(new Version());
+        usersSubCommands.add(new mc.nightmarephoenix.nightmaredungeons.commands.subcommands.List());
 
         // Admin
         adminSubCommands.add(new Reload());
         adminSubCommands.add(new SpawnEnemy());
         adminSubCommands.add(new SpawnBoss());
         adminSubCommands.add(new StartDungeon());
+        adminSubCommands.add(new StopDungeon());
 
     }
 
