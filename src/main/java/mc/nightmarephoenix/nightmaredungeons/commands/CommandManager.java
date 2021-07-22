@@ -26,6 +26,7 @@ public class CommandManager implements TabExecutor {
         adminSubCommands.add(new Reload());
         adminSubCommands.add(new SpawnEnemy());
         adminSubCommands.add(new SpawnBoss());
+        adminSubCommands.add(new StartDungeon());
 
     }
 

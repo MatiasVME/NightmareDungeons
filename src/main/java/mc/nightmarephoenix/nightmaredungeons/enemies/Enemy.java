@@ -23,6 +23,18 @@ public class Enemy {
         this.drops = drops;
     }
 
+    public Enemy(Enemy enemy) {
+        this.name    = enemy.getName();
+        this.baseMob = enemy.getBaseMob();
+        this.health  = enemy.getHealth();
+        this.damage  = enemy.getDamage();
+        this.armor   = enemy.getArmor();
+        this.potionEffects = enemy.getPotionEffects();
+        this.potionEffectsDuration = enemy.getPotionEffectsDuration();
+        this.spawnLocation = enemy.getSpawnLocation();
+        this.drops = enemy.getDrops();
+    }
+
     public String getName() {
         return name;
     }
@@ -97,4 +109,5 @@ public class Enemy {
     private Location                    spawnLocation;
     private Entity                      entity;
     private ArrayList<ItemStack>        drops;
+
 }

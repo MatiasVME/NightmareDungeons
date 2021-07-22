@@ -38,7 +38,7 @@ public final class NightmareDungeons extends JavaPlugin {
         this.getCommand("nd").setExecutor(new CommandManager());
         this.getCommand("dungeons").setExecutor(new CommandManager());
 
-        // // Default config files // //
+        // // Default config files and check for updates // //
         this.saveDefaultConfig();
         File configFile = new File(getDataFolder(), "config.yml");
         try {

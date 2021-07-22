@@ -140,42 +140,44 @@ public class BossManager {
         return bosses;
     }
 
-    public static void spawnBoss(Boss boss, Location loc) {
+    public static void spawnBoss(Boss boss1, Location loc) {
 
-        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, boss.getBaseMob());
+        Boss newBoss = new Boss(boss1);
 
-        entity.getEquipment().setHelmet(boss.getArmor().getHelmet());
-        entity.getEquipment().setChestplate(boss.getArmor().getChestplate());
-        entity.getEquipment().setLeggings(boss.getArmor().getLeggings());
-        entity.getEquipment().setBoots(boss.getArmor().getBoots());
+        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, newBoss.getBaseMob());
 
-        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(boss.getHealth());
+        entity.getEquipment().setHelmet(newBoss.getArmor().getHelmet());
+        entity.getEquipment().setChestplate(newBoss.getArmor().getChestplate());
+        entity.getEquipment().setLeggings(newBoss.getArmor().getLeggings());
+        entity.getEquipment().setBoots(newBoss.getArmor().getBoots());
+
+        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(newBoss.getHealth());
         entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-        entity.damage(boss.getDamage());
+        entity.damage(newBoss.getDamage());
 
         entity.setCustomNameVisible(true);
-        entity.setCustomName(Utils.Color(boss.getNametag()));
+        entity.setCustomName(Utils.Color(newBoss.getNametag()));
 
         entity.setCanPickupItems(false);
 
-        for(PotionEffectType effect: boss.getPotionEffects()) {
-            entity.addPotionEffect(effect.createEffect(10000, boss.getPotionEffectsDuration().get(boss.getPotionEffects().indexOf(effect))));
+        for(PotionEffectType effect: newBoss.getPotionEffects()) {
+            entity.addPotionEffect(effect.createEffect(10000, newBoss.getPotionEffectsDuration().get(newBoss.getPotionEffects().indexOf(effect))));
         }
 
-        BossBar bb = Utils.bossbar(entity, Utils.Color(boss.getNametag()), boss.getBossBarColor());
+        BossBar bb = Utils.bossbar(entity, Utils.Color(newBoss.getNametag()), newBoss.getBossBarColor());
 
         // TODO: change to only the dungeons players can see the bossbar
         for(Player p : Bukkit.getOnlinePlayers()) {
             bb.addPlayer(p);
         }
 
-        for(String line : boss.getSpawnMessage()) {
+        for(String line : newBoss.getSpawnMessage()) {
             Bukkit.getServer().broadcastMessage(Utils.Color(line));
         }
 
-        boss.setEntity(entity);
+        newBoss.setEntity(entity);
 
-        Global.spawnedBosses.add(boss);
+        Global.spawnedBosses.add(newBoss);
         Global.bossBars.add(bb);
 
     }

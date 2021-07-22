@@ -3,6 +3,7 @@ package mc.nightmarephoenix.nightmaredungeons.enemies;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -109,28 +110,32 @@ public class EnemiesManager {
                 return enemies;
             }
 
-    public static void spawnEnemy(Enemy enemy, Location loc) {
+    public static void spawnEnemy(Enemy enemy1, Location loc) {
 
-        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, enemy.getBaseMob());
+        Enemy newEnemy = new Enemy(enemy1);
 
-        entity.getEquipment().setHelmet(enemy.getArmor().getHelmet());
-        entity.getEquipment().setChestplate(enemy.getArmor().getChestplate());
-        entity.getEquipment().setLeggings(enemy.getArmor().getLeggings());
-        entity.getEquipment().setBoots(enemy.getArmor().getBoots());
+        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, newEnemy.getBaseMob());
 
-        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(enemy.getHealth());
+        entity.getEquipment().setHelmet(newEnemy.getArmor().getHelmet());
+        entity.getEquipment().setChestplate(newEnemy.getArmor().getChestplate());
+        entity.getEquipment().setLeggings(newEnemy.getArmor().getLeggings());
+        entity.getEquipment().setBoots(newEnemy.getArmor().getBoots());
+
+        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(newEnemy.getHealth());
         entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-        entity.damage(enemy.getDamage());
+        entity.damage(newEnemy.getDamage());
 
         entity.setCanPickupItems(false);
 
-        for(PotionEffectType effect: enemy.getPotionEffects()) {
-            entity.addPotionEffect(effect.createEffect(10000, enemy.getPotionEffectsDuration().get(enemy.getPotionEffects().indexOf(effect))));
+        for(PotionEffectType effect: newEnemy.getPotionEffects()) {
+            entity.addPotionEffect(effect.createEffect(10000, newEnemy.getPotionEffectsDuration().get(newEnemy.getPotionEffects().indexOf(effect))));
         }
 
-        enemy.setEntity(entity);
+        entity.setRemoveWhenFarAway(false);
 
-        Global.spawnedEnemies.add(enemy);
+        newEnemy.setEntity(entity);
+
+        Global.spawnedEnemies.add(newEnemy);
 
     }
 

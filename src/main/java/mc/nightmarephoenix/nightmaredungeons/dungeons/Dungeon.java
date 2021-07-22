@@ -18,7 +18,7 @@ public class Dungeon {
         this.top3DamagerCommands = top3DamagerCommands;
         this.boss = boss;
         this.enemies = enemies;
-        this.status = DungeonStatus.READY;
+        this.status = DungeonStatus.COOL_DOWN;
 
     }
 

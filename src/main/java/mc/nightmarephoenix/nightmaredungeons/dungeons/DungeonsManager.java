@@ -9,6 +9,7 @@ import org.bukkit.Location;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class DungeonsManager {
@@ -38,7 +39,15 @@ public class DungeonsManager {
                                         coords.get(1),
                                         coords.get(2)
                                 ));
-                        enemies.add(e1);
+
+                        int minAmount = dungeon.getInt("mobs-spawn." + spawn + ".enemies-amount-min");
+                        int maxAmount = dungeon.getInt("mobs-spawn." + spawn + ".enemies-amount-max");
+
+                        Random r = new Random();
+                        for(int i = 0; i < r.nextInt(maxAmount - minAmount) + minAmount; i++) {
+                            enemies.add(e1);
+                            System.out.println(e1.getDrops());
+                        }
                         break;
                     }
                 }
@@ -77,7 +86,11 @@ public class DungeonsManager {
         return dungeons;
     }
 
-    public static Dungeon getDungeonByName() {
+    public static Dungeon getDungeonByName(String name) {
+        for(Dungeon dungeon : Global.dungeons) {
+            if(name.equals(dungeon.getName())) return dungeon;
+        }
+
         return null;
     }
 

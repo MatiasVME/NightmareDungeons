@@ -10,7 +10,10 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Utils {
 
@@ -40,6 +43,21 @@ public class Utils {
                 '§',
                 Color(Messages.getConfig().getString("plugin-prefix")) + Messages.getConfig().getString(str).replace("&", "§")
         ));
+    }
+
+    public static void sendConfigMessage(String str, CommandSender sender, HashMap<String, String> placeholders) {
+        String message = Messages.getConfig().getString(str);
+
+        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+            String toReplace = entry.getKey();
+            String target = entry.getValue();
+            message = message.replaceAll(toReplace, target);
+        }
+
+        sender.sendMessage(
+                Color(Messages.getConfig().getString("plugin-prefix")) +
+                        Color(message)
+        );
     }
 
     public static void sendConfigMultilineMessage(String message, CommandSender sender) {

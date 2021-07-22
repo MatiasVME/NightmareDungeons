@@ -34,6 +34,27 @@ public class Boss {
         this.spawnLocation = spawnLocation;
     }
 
+    public Boss(Boss boss) {
+        this.enabled = boss.enabled;
+        this.baseMob = boss.baseMob;
+        this.name = boss.name;
+        this.health = boss.health;
+        this.damage = boss.damage;
+        this.speed = boss.speed;
+        this.bossBarEnabled = boss.bossBarEnabled;
+        this.bossBarColor = boss.bossBarColor;
+        this.spawnMessage = boss.spawnMessage;
+        this.deathMessage = boss.deathMessage;
+        this.immunities = boss.immunities;
+        this.drops = boss.drops;
+        this.deathCommands = boss.deathCommands;
+        this.armor = boss.armor;
+        this.potionEffects = boss.potionEffects;
+        this.potionEffectsDuration = boss.potionEffectsDuration;
+        this.nametag = boss.nametag;
+        this.spawnLocation = boss.spawnLocation;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }

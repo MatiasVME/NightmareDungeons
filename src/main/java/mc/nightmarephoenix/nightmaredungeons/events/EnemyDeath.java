@@ -13,7 +13,6 @@ public class EnemyDeath implements Listener {
 
     @EventHandler
     public void mobDeath(EntityDeathEvent event) {
-
         for(Enemy enemy : Global.spawnedEnemies) {
             if(enemy.getEntity().equals(event.getEntity())) {
                 ArrayList<ItemStack> drops = enemy.getDrops();
