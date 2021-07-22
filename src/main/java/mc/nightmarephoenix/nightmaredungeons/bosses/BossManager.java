@@ -1,5 +1,6 @@
 package mc.nightmarephoenix.nightmaredungeons.bosses;
 
+import mc.nightmarephoenix.nightmaredungeons.dungeons.Dungeon;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
@@ -175,11 +176,22 @@ public class BossManager {
             Bukkit.getServer().broadcastMessage(Utils.Color(line));
         }
 
+        entity.setRemoveWhenFarAway(false);
+
         newBoss.setEntity(entity);
 
         Global.spawnedBosses.add(newBoss);
         Global.bossBars.add(bb);
 
+    }
+
+    public static Boss getBossByName(String name) {
+        for(Boss boss : Global.bosses) {
+            if(name.equals(boss.getName())) {
+                return boss;
+            }
+        }
+        return null;
     }
 
 }

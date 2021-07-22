@@ -1,6 +1,6 @@
 dungeon-name: "Dungeon1"
 world-name: world
-
+spawn-boss-after-all-enemies-die: false
 door-coords:
   pos1: [ 50, 65, 65 ]
   pos2: [ 50, 65, 65 ]

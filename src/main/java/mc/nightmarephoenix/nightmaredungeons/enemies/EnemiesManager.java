@@ -3,7 +3,6 @@ package mc.nightmarephoenix.nightmaredungeons.enemies;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -13,7 +12,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
-
 import java.util.ArrayList;
 import java.util.Set;
 

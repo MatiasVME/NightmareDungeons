@@ -1,6 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.dungeons;
 
 import mc.nightmarephoenix.nightmaredungeons.bosses.Boss;
+import mc.nightmarephoenix.nightmaredungeons.bosses.BossManager;
 import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
 import mc.nightmarephoenix.nightmaredungeons.storage.DungeonsStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
@@ -20,8 +21,6 @@ public class DungeonsManager {
         DungeonsStorage.getConfigs().forEach((dungeon) -> {
             ArrayList<DungeonRules> rules = new ArrayList<>();
             ArrayList<Enemy> enemies = new ArrayList<>();
-            Boss dungeonBoss = null;
-
 
             /**
              * Iterates over all enemies spawns and assigns the enemy to the arraylist.
@@ -41,35 +40,25 @@ public class DungeonsManager {
                                 ));
 
                         int minAmount = dungeon.getInt("mobs-spawn." + spawn + ".enemies-amount-min");
-                        int maxAmount = dungeon.getInt("mobs-spawn." + spawn + ".enemies-amount-max");
+                        int maxAmount = dungeon.getInt("mobs-spawn." + spawn + ".enemies-amount-max") + 1;
 
                         Random r = new Random();
                         for(int i = 0; i < r.nextInt(maxAmount - minAmount) + minAmount; i++) {
                             enemies.add(e1);
-                            System.out.println(e1.getDrops());
                         }
                         break;
                     }
                 }
             });
 
-            /**
-             * Loading the boss.
-             */
-            for(Boss boss: Global.bosses) {
-                if(dungeon.getString("boss-spawn.spawn.boss-name").equalsIgnoreCase(boss.getName())) {
-                    List<Integer> coords = dungeon.getIntegerList("boss-spawn.spawn.coords");
-                    boss.setSpawnLocation(
-                            new Location(
-                                    Bukkit.getWorld(dungeon.getString("world-name")),
-                                    coords.get(0),
-                                    coords.get(1),
-                                    coords.get(2)
-                            ));
-                    dungeonBoss = boss;
-                    break;
-                }
-            }
+            Boss boss = BossManager.getBossByName(dungeon.getString("boss-spawn.spawn.boss-name"));
+            List<Integer> coords = dungeon.getIntegerList("boss-spawn.spawn.coords");
+            boss.setSpawnLocation(new Location(
+                    Bukkit.getWorld(dungeon.getString("world-name")),
+                    coords.get(0),
+                    coords.get(1),
+                    coords.get(2)
+            ));
 
             dungeons.add(new Dungeon(
                     dungeon.getString("dungeon-name"),
@@ -79,8 +68,9 @@ public class DungeonsManager {
                     dungeon.getStringList("rewards.top-damager-commands.1"),
                     dungeon.getStringList("rewards.top-damager-commands.2"),
                     dungeon.getStringList("rewards.top-damager-commands.3"),
-                    dungeonBoss,
-                    enemies
+                    boss,
+                    enemies,
+                    dungeon.getBoolean("spawn-boss-after-all-enemies-die")
             ));
         });
         return dungeons;
@@ -90,7 +80,6 @@ public class DungeonsManager {
         for(Dungeon dungeon : Global.dungeons) {
             if(name.equals(dungeon.getName())) return dungeon;
         }
-
         return null;
     }
 

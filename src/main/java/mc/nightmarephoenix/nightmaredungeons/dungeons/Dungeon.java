@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Dungeon {
 
-    public Dungeon(String name, List<Integer> doorCoordinates1, List<Integer> doorCoordinates2, ArrayList<DungeonRules> rules, List<String> top1DamagerCommands, List<String> top2DamagerCommands, List<String> top3DamagerCommands, Boss boss, ArrayList<Enemy> enemies) {
+    public Dungeon(String name, List<Integer> doorCoordinates1, List<Integer> doorCoordinates2, ArrayList<DungeonRules> rules, List<String> top1DamagerCommands, List<String> top2DamagerCommands, List<String> top3DamagerCommands, Boss boss, ArrayList<Enemy> enemies, boolean spawnBossAfterAllEnemiesDie) {
 
         this.name = name;
         this.doorCoordinates1 = doorCoordinates1;
@@ -18,6 +18,7 @@ public class Dungeon {
         this.top3DamagerCommands = top3DamagerCommands;
         this.boss = boss;
         this.enemies = enemies;
+        this.spawnBossAfterAllEnemiesDie = spawnBossAfterAllEnemiesDie;
         this.status = DungeonStatus.COOL_DOWN;
 
     }
@@ -82,6 +83,10 @@ public class Dungeon {
         this.status = status;
     }
 
+    public boolean spawnBossAfterAllEnemiesDie() {
+        return spawnBossAfterAllEnemiesDie;
+    }
+
     private String                  name;
     private List<Integer>           doorCoordinates1, doorCoordinates2;
     private ArrayList<DungeonRules> rules;
@@ -91,5 +96,6 @@ public class Dungeon {
     private Boss                    boss;
     private ArrayList<Enemy>        enemies;
     private DungeonStatus           status;
+    private boolean                 spawnBossAfterAllEnemiesDie;
 
 }
