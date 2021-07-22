@@ -1,12 +1,7 @@
 package mc.nightmarephoenix.nightmaredungeons.commands.subcommands;
 
-import mc.nightmarephoenix.nightmaredungeons.bosses.Boss;
-import mc.nightmarephoenix.nightmaredungeons.bosses.BossManager;
 import mc.nightmarephoenix.nightmaredungeons.dungeons.Dungeon;
 import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonStatus;
-import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonsManager;
-import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
-import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import mc.nightmarephoenix.nightmaredungeons.util.Utils;
 import org.bukkit.command.CommandSender;
@@ -58,6 +53,5 @@ public class List extends SubCommands {
         }
         placeholder.put("%dungeons%", dungeons);
         Utils.sendConfigMultilineMessage("list-all-dungeons", sender, placeholder);
-
     }
 }

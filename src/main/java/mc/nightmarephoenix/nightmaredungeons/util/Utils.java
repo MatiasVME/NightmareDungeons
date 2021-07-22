@@ -52,7 +52,7 @@ public class Utils {
             message = message.replaceAll(toReplace, target);
         }
         sender.sendMessage(
-                (prefix) ? Color(Messages.getConfig().getString("plugin-prefix")) : "" +
+                ((prefix) ? Color(Messages.getConfig().getString("plugin-prefix")) : "") +
                         Color(message)
         );
     }

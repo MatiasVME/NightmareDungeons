@@ -29,7 +29,7 @@ public class DungeonsManager {
             spawnsStrings.forEach((spawn) -> {
                 for(Enemy e: Global.enemies) {
                     if(dungeon.getString("mobs-spawn." + spawn + ".enemy-name").equalsIgnoreCase(e.getName())) {
-                        Enemy e1 = e;
+                        Enemy e1 = new Enemy(e);
                         List<Integer> coords = dungeon.getIntegerList("mobs-spawn." + spawn + ".coords");
                         e1.setSpawnLocation(
                                 new Location(
@@ -51,7 +51,7 @@ public class DungeonsManager {
                 }
             });
 
-            Boss boss = BossManager.getBossByName(dungeon.getString("boss-spawn.spawn.boss-name"));
+            Boss boss = new Boss(BossManager.getBossByName(dungeon.getString("boss-spawn.spawn.boss-name")));
             List<Integer> coords = dungeon.getIntegerList("boss-spawn.spawn.coords");
             boss.setSpawnLocation(new Location(
                     Bukkit.getWorld(dungeon.getString("world-name")),
