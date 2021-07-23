@@ -4,6 +4,8 @@ import com.tchristofferson.configupdater.ConfigUpdater;
 import mc.nightmarephoenix.nightmaredungeons.bosses.Boss;
 import mc.nightmarephoenix.nightmaredungeons.bosses.BossManager;
 import mc.nightmarephoenix.nightmaredungeons.commands.CommandManager;
+import mc.nightmarephoenix.nightmaredungeons.dungeons.Dungeon;
+import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonStatus;
 import mc.nightmarephoenix.nightmaredungeons.enemies.EnemiesManager;
 import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
 import mc.nightmarephoenix.nightmaredungeons.events.BossDeath;
@@ -87,8 +89,15 @@ public final class NightmareDungeons extends JavaPlugin {
     public void onDisable() {
         try {
             Logger.info("Killing all bosses and enemies.");
-            for(Enemy e : Global.spawnedEnemies) e.getEntity().remove();
-            for(Boss e : Global.spawnedBosses) e.getEntity().remove();
+            for(Dungeon dungeon : Global.dungeons) {
+                if(dungeon.getStatus().equals(DungeonStatus.READY) || dungeon.getStatus().equals(DungeonStatus.IN_PROGRESS)) {
+                    for(Enemy e : dungeon.getEnemies()) {
+                        e.getEntity().remove();
+                    }
+                    if(dungeon.getBoss().getEntity() != null)
+                        dungeon.getBoss().getEntity().remove();
+                }
+            }
 
             Logger.info("Removing all bossBars.");
             for(BossBar b : Global.bossBars) b.removeAll();

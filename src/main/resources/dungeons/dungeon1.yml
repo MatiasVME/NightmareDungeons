@@ -8,13 +8,13 @@ mobs-spawn:
   spawn1:
     coords: [ -55, 71, -49 ]
     enemy-name: "Generic_Skeleton"
-    enemies-amount-min: 10
-    enemies-amount-max: 15
+    enemies-amount-min: 1
+    enemies-amount-max: 2
   spawn2:
     coords: [ -46, 71, -49 ]
     enemy-name: "Generic_Zombie"
-    enemies-amount-min: 10
-    enemies-amount-max: 15
+    enemies-amount-min: 1
+    enemies-amount-max: 3
 
 boss-spawn:
   spawn:

@@ -10,11 +10,6 @@ public class BossHurtEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent event) {
 
-        if(Global.spawnedBosses.contains(event.getEntity())) {
-
-
-
-        }
 
     }
 

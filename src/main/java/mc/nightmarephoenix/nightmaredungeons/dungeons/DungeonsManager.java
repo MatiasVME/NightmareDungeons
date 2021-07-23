@@ -44,7 +44,7 @@ public class DungeonsManager {
 
                         Random r = new Random();
                         for(int i = 0; i < r.nextInt(maxAmount - minAmount) + minAmount; i++) {
-                            enemies.add(e1);
+                            enemies.add(new Enemy(e1));
                         }
                         break;
                     }

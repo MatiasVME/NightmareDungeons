@@ -1,5 +1,6 @@
 package mc.nightmarephoenix.nightmaredungeons.enemies;
 
+import mc.nightmarephoenix.nightmaredungeons.dungeons.Dungeon;
 import mc.nightmarephoenix.nightmaredungeons.storage.EnemiesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
@@ -8,17 +9,20 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class EnemiesManager {
 
     public static ArrayList<Enemy> getAllEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
+
         EnemiesStorage.getConfigs().forEach((enemyFile) -> {
             ItemStack helmet = null,
                       chestplate = null,
@@ -105,36 +109,31 @@ public class EnemiesManager {
                     drops
                 ));
             });
-                return enemies;
-            }
+        return enemies;
+    }
 
-    public static void spawnEnemy(Enemy enemy1, Location loc) {
+    public static void spawnEnemy(Enemy enemy, Location loc) {
+        Entity ent = loc.getWorld().spawnEntity(loc, enemy.getBaseMob());
+        LivingEntity entity = (LivingEntity) ent;
 
-        Enemy newEnemy = new Enemy(enemy1);
+        entity.getEquipment().setHelmet(enemy.getArmor().getHelmet());
+        entity.getEquipment().setChestplate(enemy.getArmor().getChestplate());
+        entity.getEquipment().setLeggings(enemy.getArmor().getLeggings());
+        entity.getEquipment().setBoots(enemy.getArmor().getBoots());
 
-        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, newEnemy.getBaseMob());
-
-        entity.getEquipment().setHelmet(newEnemy.getArmor().getHelmet());
-        entity.getEquipment().setChestplate(newEnemy.getArmor().getChestplate());
-        entity.getEquipment().setLeggings(newEnemy.getArmor().getLeggings());
-        entity.getEquipment().setBoots(newEnemy.getArmor().getBoots());
-
-        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(newEnemy.getHealth());
+        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(enemy.getHealth());
         entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-        entity.damage(newEnemy.getDamage());
+        entity.damage(enemy.getDamage());
 
         entity.setCanPickupItems(false);
 
-        for(PotionEffectType effect: newEnemy.getPotionEffects()) {
-            entity.addPotionEffect(effect.createEffect(10000, newEnemy.getPotionEffectsDuration().get(newEnemy.getPotionEffects().indexOf(effect))));
+        for(PotionEffectType effect: enemy.getPotionEffects()) {
+            entity.addPotionEffect(effect.createEffect(10000, enemy.getPotionEffectsDuration().get(enemy.getPotionEffects().indexOf(effect))));
         }
 
         entity.setRemoveWhenFarAway(false);
 
-        newEnemy.setEntity(entity);
-
-        Global.spawnedEnemies.add(newEnemy);
-
+        enemy.setEntity(ent);
     }
 
     public static void spawnEnemies(ArrayList<Enemy> enemies) {
@@ -142,5 +141,4 @@ public class EnemiesManager {
             spawnEnemy(enemy, enemy.getSpawnLocation());
         }
     }
-
 }

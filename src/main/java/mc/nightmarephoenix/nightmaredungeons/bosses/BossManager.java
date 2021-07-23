@@ -1,6 +1,5 @@
 package mc.nightmarephoenix.nightmaredungeons.bosses;
 
-import mc.nightmarephoenix.nightmaredungeons.dungeons.Dungeon;
 import mc.nightmarephoenix.nightmaredungeons.storage.BossesStorage;
 import mc.nightmarephoenix.nightmaredungeons.util.ArmorSet;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
@@ -141,46 +140,43 @@ public class BossManager {
         return bosses;
     }
 
-    public static void spawnBoss(Boss boss1, Location loc) {
+    public static void spawnBoss(Boss boss, Location loc) {
 
-        Boss newBoss = new Boss(boss1);
+        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, boss.getBaseMob());
 
-        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, newBoss.getBaseMob());
+        entity.getEquipment().setHelmet(boss.getArmor().getHelmet());
+        entity.getEquipment().setChestplate(boss.getArmor().getChestplate());
+        entity.getEquipment().setLeggings(boss.getArmor().getLeggings());
+        entity.getEquipment().setBoots(boss.getArmor().getBoots());
 
-        entity.getEquipment().setHelmet(newBoss.getArmor().getHelmet());
-        entity.getEquipment().setChestplate(newBoss.getArmor().getChestplate());
-        entity.getEquipment().setLeggings(newBoss.getArmor().getLeggings());
-        entity.getEquipment().setBoots(newBoss.getArmor().getBoots());
-
-        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(newBoss.getHealth());
+        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(boss.getHealth());
         entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-        entity.damage(newBoss.getDamage());
+        entity.damage(boss.getDamage());
 
         entity.setCustomNameVisible(true);
-        entity.setCustomName(Utils.Color(newBoss.getNametag()));
+        entity.setCustomName(Utils.Color(boss.getNametag()));
 
         entity.setCanPickupItems(false);
 
-        for(PotionEffectType effect: newBoss.getPotionEffects()) {
-            entity.addPotionEffect(effect.createEffect(10000, newBoss.getPotionEffectsDuration().get(newBoss.getPotionEffects().indexOf(effect))));
+        for(PotionEffectType effect: boss.getPotionEffects()) {
+            entity.addPotionEffect(effect.createEffect(10000, boss.getPotionEffectsDuration().get(boss.getPotionEffects().indexOf(effect))));
         }
 
-        BossBar bb = Utils.bossbar(entity, Utils.Color(newBoss.getNametag()), newBoss.getBossBarColor());
+        BossBar bb = Utils.bossbar(entity, Utils.Color(boss.getNametag()), boss.getBossBarColor());
 
         // TODO: change to only the dungeons players can see the bossbar
         for(Player p : Bukkit.getOnlinePlayers()) {
             bb.addPlayer(p);
         }
 
-        for(String line : newBoss.getSpawnMessage()) {
+        for(String line : boss.getSpawnMessage()) {
             Bukkit.getServer().broadcastMessage(Utils.Color(line));
         }
 
         entity.setRemoveWhenFarAway(false);
 
-        newBoss.setEntity(entity);
+        boss.setEntity(entity);
 
-        Global.spawnedBosses.add(newBoss);
         Global.bossBars.add(bb);
 
     }

@@ -46,8 +46,13 @@ public class StartDungeon extends SubCommands {
             Dungeon dungeon = DungeonsManager.getDungeonByName(args[1]);
             if(dungeon != null) {
                 if(!dungeon.getStatus().equals(DungeonStatus.COOL_DOWN)) {
-                    for(Enemy e : Global.spawnedEnemies) e.getEntity().remove();
-                    for(Boss e : Global.spawnedBosses) e.getEntity().remove();
+                    if(dungeon.getStatus().equals(DungeonStatus.READY) || dungeon.getStatus().equals(DungeonStatus.IN_PROGRESS)) {
+                        for(Enemy e : dungeon.getEnemies()) {
+                            e.getEntity().remove();
+                        }
+                        if(dungeon.getBoss().getEntity() != null)
+                            dungeon.getBoss().getEntity().remove();
+                    }
                 }
                 EnemiesManager.spawnEnemies(dungeon.getEnemies());
 
