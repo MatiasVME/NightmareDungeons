@@ -5,6 +5,7 @@ import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonStatus;
 import mc.nightmarephoenix.nightmaredungeons.enemies.Enemy;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -34,6 +35,24 @@ public class EnemyDeath implements Listener {
                         break;
                     }
                 }
+            }
+        }
+
+        // // Spawned via (/nd spawnEnemy) command // //
+        for(Enemy enemy : Global.enemies) {
+            if(event.getEntity().equals(enemy.getEntity())) {
+                ArrayList<ItemStack> drops = enemy.getDrops();
+                if(!drops.isEmpty()) {
+                    event.getDrops().clear();
+
+                    for(ItemStack is : drops) {
+                        event.getEntity().getLocation().getWorld().dropItem(
+                                event.getEntity().getLocation(),
+                                is
+                        );
+                    }
+                }
+                break;
             }
         }
     }

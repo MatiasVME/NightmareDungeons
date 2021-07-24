@@ -1,5 +1,6 @@
 package mc.nightmarephoenix.nightmaredungeons.events;
 
+import mc.nightmarephoenix.nightmaredungeons.bosses.Boss;
 import mc.nightmarephoenix.nightmaredungeons.dungeons.Dungeon;
 import mc.nightmarephoenix.nightmaredungeons.dungeons.DungeonStatus;
 import mc.nightmarephoenix.nightmaredungeons.util.Global;
@@ -21,7 +22,6 @@ public class BossDeath implements Listener {
                     ArrayList<ItemStack> drops = dungeon.getBoss().getDrops();
                     if(!drops.isEmpty()) {
                         event.getDrops().clear();
-
                         for(ItemStack is : drops) {
                             event.getEntity().getLocation().getWorld().dropItem(
                                     event.getEntity().getLocation(),
@@ -29,17 +29,37 @@ public class BossDeath implements Listener {
                             );
                         }
                     }
-
                     for(String cmd : dungeon.getBoss().getDeathCommands()) {
                         Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), cmd);
                     }
-
                     for(String line : dungeon.getBoss().getDeathMessage()) {
                         Bukkit.getServer().broadcastMessage(Utils.Color(line.replaceAll("%killer%", event.getEntity().getKiller().getName())));
                     }
-
                     break;
                 }
+            }
+        }
+
+        // // Boss spawned via (/nd spawnBoss) command // //
+        for(Boss boss : Global.bosses) {
+            if(event.getEntity().equals(boss.getEntity())) {
+                ArrayList<ItemStack> drops = boss.getDrops();
+                if(!drops.isEmpty()) {
+                    event.getDrops().clear();
+                    for(ItemStack is : drops) {
+                        event.getEntity().getLocation().getWorld().dropItem(
+                                event.getEntity().getLocation(),
+                                is
+                        );
+                    }
+                }
+                for(String cmd : boss.getDeathCommands()) {
+                    Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), cmd);
+                }
+                for(String line : boss.getDeathMessage()) {
+                    Bukkit.getServer().broadcastMessage(Utils.Color(line.replaceAll("%killer%", event.getEntity().getKiller().getName())));
+                }
+                break;
             }
         }
     }
