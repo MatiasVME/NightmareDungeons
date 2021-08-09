@@ -6,7 +6,7 @@ bossbar:
   color: GREEN
 name-tag: "&cSuper &4&lBoss 1"
 health: 1000
-damage: 40
+damage: 40 # hace aparecer el boss con vida quitada, no con más fuerza en su daño.
 speed: 2
 armor:
   helmet:
